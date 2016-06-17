@@ -1,0 +1,4 @@
+import "base.proto";
+import "article_base.proto";
+
+message action : TAuxDicArticle {}

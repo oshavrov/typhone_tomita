@@ -1,0 +1,26 @@
+encoding "utf8";
+
+TTextMinerConfig {
+	Dictionary = "dic.gzt";
+	PrettyOutput = "pretty.html";
+
+	Input = {
+		File = "IO/garant_input.txt";
+	}
+
+	Output = {
+		File = "IO/output.txt";
+		Format = text;
+	}
+
+	Articles = [
+		{Name = "клиент_место"}
+		{Name = "клиент_телефон"}
+	]
+
+	Facts = [
+		{Name = "CustomerPlace"}
+		{Name = "CustomerPhone"}
+	]
+}
+

@@ -1,0 +1,10 @@
+import "base.proto";           // описание protobuf-типов
+import "facttypes_base.proto"; // описание protobuf-типа NFactType.TFact
+
+message CustomerPhone : NFactType.TFact {
+	required string Phone = 1;
+}
+
+message CustomerPlace : NFactType.TFact {
+	required string Place = 1;
+}
