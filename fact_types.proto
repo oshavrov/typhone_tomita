@@ -20,4 +20,5 @@ message Matter : NFactType.TFact {
 message Phone : NFactType.TFact {
 	optional string Word = 1 [default = "телефон"];
 	optional string Vendor = 2;
+	optional string Model = 3;
 }
