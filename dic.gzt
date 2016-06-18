@@ -4,10 +4,18 @@ import "articles_base.proto";  // Файлы base.proto и articles_base.proto �
 
 import "fact_types.proto";
 
+import "matter/matter.gzt";
+
+/*
 TAuxDicArticle "клиент_телефон" {
 	key = {"tomita:customer/phone.cxx" type = CUSTOM}
 }
 
 TAuxDicArticle "клиент_место" {
 	key = {"tomita:customer/place.cxx" type = CUSTOM}
+}
+*/
+
+TAuxDicArticle "телефон" {
+	key = {"tomita:matter/phone.cxx" type = CUSTOM}
 }

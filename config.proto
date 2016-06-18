@@ -3,6 +3,8 @@ encoding "utf8";
 TTextMinerConfig {
 	Dictionary = "dic.gzt";
 	PrettyOutput = "pretty.html";
+	PrintTree="tree.txt";
+	PrintRules="rules.txt";
 
 	Input = {
 		File = "IO/garant_input.txt";
@@ -14,13 +16,14 @@ TTextMinerConfig {
 	}
 
 	Articles = [
-		{Name = "клиент_место"}
-		{Name = "клиент_телефон"}
+		//{Name = "клиент_место"}
+		//{Name = "клиент_телефон"}
+		{Name = "телефон"}
 	]
 
 	Facts = [
-		{Name = "CustomerPlace"}
-		{Name = "CustomerPhone"}
+		//{Name = "CustomerPlace"}
+		//{Name = "CustomerPhone"}
+		{Name = "Phone"}
 	]
 }
-
