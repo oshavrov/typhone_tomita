@@ -16,6 +16,7 @@ message Matter : NFactType.TFact {
 }
 */
 
+// Если хотя бы одно из полей заполнено - то успех
 message Phone : NFactType.TFact {
 	optional string Word = 1 [default = "телефон"];
 	optional string Vendor = 2;

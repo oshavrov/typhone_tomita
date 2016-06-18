@@ -18,78 +18,137 @@
 
 
 
+===================== matter/phone.cxx =====================
+
+coverage: 1, weight: 0.35
+S  ->  PhoneWord[*тел] :: 0.66666666
+    PhoneWord  ->  Word[*тел]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  тел :: 1
+
+
+
 ==================== multiwords ====================
 
+тел: TAuxDicArticle, matter, 
+	телефон, телефон_слово, 
+
+
+===================== matter/phone.cxx =====================
+
+coverage: 1, weight: 0.35
+S  ->  PhoneWord[*телефон] :: 0.66666666
+    PhoneWord  ->  Word[*телефон]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  телефон :: 1
+
+
+
+==================== multiwords ====================
+
+телефон: TAuxDicArticle, matter, 
+	телефон, телефон_слово, 
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+==================== multiwords ====================
+
+
+
+===================== matter/phone.cxx =====================
+
+coverage: 2, weight: 0.34333333
+S  ->  PhoneWord[*тел]  PhoneVendor[сони] :: 0.43333333
+|   
+|__ PhoneWord  ->  Word[*тел]<kwt=телефон_слово> :: 0.66666666
+|       Word  ->  тел :: 1
+|   
+|__ PhoneVendor  ->  PhoneVendorRus[*сони] :: 0.66666666
+        PhoneVendorRus  ->  Word[*сони]<kwt=телефон_производитель_рус> :: 0.66666666
+            Word  ->  сони :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.35
+S  ->  PhoneWord[*тел] :: 0.66666666
+    PhoneWord  ->  Word[*тел]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  тел :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.34333333
+S  ->  PhoneVendor[*сони] :: 0.66666666
+    PhoneVendor  ->  PhoneVendorRus[*сони] :: 0.66666666
+        PhoneVendorRus  ->  Word[*сони]<kwt=телефон_производитель_рус> :: 0.66666666
+            Word  ->  сони :: 1
+
+
+
+==================== multiwords ====================
+
+сони: matter, 
+	телефон_производитель_рус, 
 тел: matter, 
 	телефон_слово, 
-
-
-==================== multiwords ====================
-
-телефон: matter, 
-	телефон_слово, 
-
-
-==================== multiwords ====================
-
+тел_сони: TAuxDicArticle, 
+	телефон, 
 
 
 ==================== multiwords ====================
 
 
 
-==================== multiwords ====================
+===================== matter/phone.cxx =====================
+
+coverage: 1, weight: 0.35
+S  ->  PhoneVendor[*сони] :: 0.66666666
+    PhoneVendor  ->  PhoneVendorRus[*сони] :: 0.66666666
+        PhoneVendorRus  ->  Word[*сони]<kwt=телефон_производитель_рус> :: 0.66666666
+            Word  ->  сони :: 1
 
 
 
 ==================== multiwords ====================
 
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
-тел: matter, 
-	телефон_слово, 
-
-
-==================== multiwords ====================
-
-
-
-==================== multiwords ====================
-
+сони: TAuxDicArticle, matter, 
+	телефон, телефон_производитель_рус, 
 
 
 ==================== multiwords ====================
@@ -160,16 +219,34 @@ Samsung: TAuxDicArticle, matter,
 
 
 
+===================== matter/phone.cxx =====================
+
+coverage: 1, weight: 0.33809523
+S  ->  PhoneWord[*телефон] :: 0.66666666
+    PhoneWord  ->  Word[*телефон]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  телефон :: 1
+
+
+
 ==================== multiwords ====================
 
-телефон: matter, 
-	телефон_слово, 
+телефон: TAuxDicArticle, matter, 
+	телефон, телефон_слово, 
+
+
+===================== matter/phone.cxx =====================
+
+coverage: 1, weight: 0.35
+S  ->  PhoneWord[*тел] :: 0.66666666
+    PhoneWord  ->  Word[*тел]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  тел :: 1
+
 
 
 ==================== multiwords ====================
 
-тел: matter, 
-	телефон_слово, 
+тел: TAuxDicArticle, matter, 
+	телефон, телефон_слово, 
 
 
 ===================== matter/phone.cxx =====================
@@ -183,6 +260,11 @@ S  ->  PhoneWord[*тел]  PhoneVendor[самсунг] :: 0.43333333
 |__ PhoneVendor  ->  PhoneVendorRus[*самсунг] :: 0.66666666
         PhoneVendorRus  ->  Word[*самсунг]<kwt=телефон_производитель_рус> :: 0.66666666
             Word  ->  самсунг :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.35
+S  ->  PhoneWord[*тел] :: 0.66666666
+    PhoneWord  ->  Word[*тел]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  тел :: 1
 
 DROPPED OCCURRENCE, coverage: 1, weight: 0.34333333
 S  ->  PhoneVendor[*самсунг] :: 0.66666666
@@ -213,6 +295,11 @@ S  ->  PhoneWord[*тел]  PhoneVendor[samsung] :: 0.43333333
 |__ PhoneVendor  ->  PhoneVendorEng[*samsung] :: 0.66666666
         PhoneVendorEng  ->  Word[*samsung]<kwt=телефон_производитель_англ> :: 0.66666666
             Word  ->  samsung :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.35
+S  ->  PhoneWord[*тел] :: 0.66666666
+    PhoneWord  ->  Word[*тел]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  тел :: 1
 
 DROPPED OCCURRENCE, coverage: 1, weight: 0.34333333
 S  ->  PhoneVendor[*samsung] :: 0.66666666

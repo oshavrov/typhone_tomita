@@ -13,3 +13,9 @@ matter "телефон_производитель_рус" {
 matter "телефон_производитель_англ" {
 	key = { "matter/phone_vendor_eng.txt" type=FILE}
 }
+
+/* Попробую пока чисто с грамматиками
+matter "телефон_модель" {
+	key = { "matter/phone_model_eng.txt" type=FILE}
+}
+*/
