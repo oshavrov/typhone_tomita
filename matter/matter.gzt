@@ -4,6 +4,7 @@ import "kwtypes.proto";
 
 matter "телефон_слово" {
 	 key = { "matter/phone_word.txt" type=FILE }
+	 lemma = "телефон"
 }
 
 matter "телефон_производитель_рус" {
@@ -19,3 +20,8 @@ matter "телефон_модель" {
 	key = { "matter/phone_model_eng.txt" type=FILE}
 }
 */
+
+matter "телефон_пользовательское_название" {
+	key = { "matter/phone_user_defined_name.txt" type=FILE}
+}
+

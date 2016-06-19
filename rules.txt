@@ -152,16 +152,24 @@ S  ->  PhoneVendor[*сони] ::
 S  ->  PhoneWord[*тел]  PhoneVendor[сони] ::
 
 
-PhoneModel  ->  UnknownPOS[*хперия] ::
+{UnknownPOS+}  ->  UnknownPOS[*хперия] ::
 
 
-PhoneModel  ->  UnknownPOS[*хперия] ::
+{UnknownPOS+}  ->  UnknownPOS[*хперия] ::
 
 
-S  ->  PhoneVendor[*сони]  PhoneModel[хперия] ::
+PhoneModel  ->  {UnknownPOS+}[*хперия]  AnyWord[з3] ::
+    Ok: wfm[1]=/^(\w{0,8}\d{0,8})|(\d{0,8}\w{0,8})$/
 
 
-S  ->  PhoneWord[*тел]  PhoneVendor[сони]  PhoneModel[хперия] ::
+PhoneModel  ->  {UnknownPOS+}[*хперия]  AnyWord[з3] ::
+    Ok: wfm[1]=/^(\w{0,8}\d{0,8})|(\d{0,8}\w{0,8})$/
+
+
+S  ->  PhoneVendor[*сони]  PhoneModel[хперия з3] ::
+
+
+S  ->  PhoneWord[*тел]  PhoneVendor[сони]  PhoneModel[хперия з3] ::
 
 
 ********************************** finished matter/phone.cxx **********************************
@@ -185,10 +193,49 @@ PhoneVendor  ->  PhoneVendorRus[*сони] ::
 S  ->  PhoneVendor[*сони] ::
 
 
-PhoneModel  ->  UnknownPOS[*хперия] ::
+{UnknownPOS+}  ->  UnknownPOS[*хперия] ::
 
 
-S  ->  PhoneVendor[*сони]  PhoneModel[хперия] ::
+PhoneModel  ->  {UnknownPOS+}[*хперия]  AnyWord[з3] ::
+    Ok: wfm[1]=/^(\w{0,8}\d{0,8})|(\d{0,8}\w{0,8})$/
+
+
+S  ->  PhoneVendor[*сони]  PhoneModel[хперия з3] ::
+
+
+********************************** finished matter/phone.cxx **********************************
+
+
+
+========================================== processing matter/phone.cxx ==========================================
+
+PhoneVendorRus  ->  Word[*сони]<kwt=телефон_производитель_рус> ::
+
+
+PhoneVendor  ->  PhoneVendorRus[*сони] ::
+
+
+S  ->  PhoneVendor[*сони] ::
+
+
+{UnknownPOS+}  ->  UnknownPOS[*хперия] ::
+
+
+PhoneModel  ->  {UnknownPOS+}[*хперия]  AnyWord[хперия] ::
+    Ok: wfm[1]=/^(\w{0,8}\d{0,8})|(\d{0,8}\w{0,8})$/
+
+
+{UnknownPOS+}  ->  {UnknownPOS+}[*хперия]  UnknownPOS[хперия] ::
+
+
+S  ->  PhoneVendor[*сони]  PhoneModel[хперия хперия] ::
+
+
+PhoneModel  ->  {UnknownPOS+}[*хперия хперия]  AnyWord[з3] ::
+    Ok: wfm[1]=/^(\w{0,8}\d{0,8})|(\d{0,8}\w{0,8})$/
+
+
+S  ->  PhoneVendor[*сони]  PhoneModel[хперия хперия з3] ::
 
 
 ********************************** finished matter/phone.cxx **********************************
@@ -299,22 +346,10 @@ PhoneWord  ->  Word[*тел]<kwt=телефон_слово> ::
 S  ->  PhoneWord[*тел] ::
 
 
-PhoneVendorRus  ->  Word[*айфон]<kwt=телефон_производитель_рус> ::
+PhoneUserDefinedName  ->  AnyWord[*айфон_6s]<kwt=телефон_пользовательское_название> ::
 
 
-PhoneVendorRus  ->  Word[*айфон]<kwt=телефон_производитель_рус> ::
-
-
-PhoneVendor  ->  PhoneVendorRus[*айфон] ::
-
-
-PhoneVendor  ->  PhoneVendorRus[*айфон] ::
-
-
-S  ->  PhoneVendor[*айфон] ::
-
-
-S  ->  PhoneWord[*тел]  PhoneVendor[айфон] ::
+S  ->  PhoneUserDefinedName[*айфон_6s] ::
 
 
 ********************************** finished matter/phone.cxx **********************************
@@ -398,11 +433,23 @@ S  ->  PhoneVendor[*samsung] ::
 
 ========================================== processing matter/phone.cxx ==========================================
 
+PhoneUserDefinedName  ->  AnyWord[*айфон6s]<kwt=телефон_пользовательское_название> ::
+
+
+S  ->  PhoneUserDefinedName[*айфон6s] ::
+
+
 ********************************** finished matter/phone.cxx **********************************
 
 
 
 ========================================== processing matter/phone.cxx ==========================================
+
+PhoneUserDefinedName  ->  AnyWord[*айфон6s]<kwt=телефон_пользовательское_название> ::
+
+
+S  ->  PhoneUserDefinedName[*айфон6s] ::
+
 
 ********************************** finished matter/phone.cxx **********************************
 
