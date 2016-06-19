@@ -17,5 +17,5 @@ TAuxDicArticle "клиент_место" {
 */
 
 TAuxDicArticle "телефон" {
-	key = {"tomita:matter/phone.cxx" type = CUSTOM}
+	key = {"tomita:matter/phone/phone.cxx" type = CUSTOM}
 }

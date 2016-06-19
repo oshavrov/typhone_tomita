@@ -18,7 +18,7 @@
 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.35
 S  ->  PhoneWord[*тел] :: 0.66666666
@@ -33,7 +33,7 @@ S  ->  PhoneWord[*тел] :: 0.66666666
 	телефон, телефон_слово, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.35
 S  ->  PhoneWord[*телефон] :: 0.66666666
@@ -96,7 +96,7 @@ S  ->  PhoneWord[*телефон] :: 0.66666666
 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 4, weight: 0.33809523
 S  ->  PhoneWord[*тел]  PhoneVendor[сони]  PhoneModel[хперия з3] :: 0.35
@@ -166,7 +166,7 @@ S  ->  PhoneVendor[*сони]  PhoneModel[хперия з3] :: 0.36666666
 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 3, weight: 0.34
 S  ->  PhoneVendor[*сони]  PhoneModel[хперия з3] :: 0.36666666
@@ -198,7 +198,7 @@ S  ->  PhoneVendor[*сони] :: 0.66666666
 	телефон, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 4, weight: 0.33809523
 S  ->  PhoneVendor[*сони]  PhoneModel[хперия хперия з3] :: 0.35
@@ -256,7 +256,7 @@ S  ->  PhoneVendor[*сони]  PhoneModel[хперия хперия] :: 0.366666
 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.34333333
 S  ->  PhoneVendor[*Samsung] :: 0.66666666
@@ -272,7 +272,7 @@ Samsung: TAuxDicArticle, matter,
 	телефон, телефон_производитель_англ, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.35
 S  ->  PhoneVendor[*Samsung] :: 0.66666666
@@ -316,7 +316,7 @@ Samsung: TAuxDicArticle, matter,
 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.33809523
 S  ->  PhoneWord[*телефон] :: 0.66666666
@@ -331,7 +331,7 @@ S  ->  PhoneWord[*телефон] :: 0.66666666
 	телефон, телефон_слово, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.35
 S  ->  PhoneWord[*тел] :: 0.66666666
@@ -355,7 +355,7 @@ S  ->  PhoneUserDefinedName[*айфон_6s] :: 0.66666666
 	телефон, телефон_слово, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 2, weight: 0.34333333
 S  ->  PhoneWord[*тел]  PhoneVendor[самсунг] :: 0.43333333
@@ -390,7 +390,77 @@ S  ->  PhoneVendor[*самсунг] :: 0.66666666
 	телефон, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
+
+coverage: 2, weight: 0.34333333
+S  ->  PhoneWord[*т]  PhoneVendor[самсунг] :: 0.43333333
+|   
+|__ PhoneWord  ->  Word[*т]<kwt=телефон_слово> :: 0.66666666
+|       Word  ->  т :: 1
+|   
+|__ PhoneVendor  ->  PhoneVendorRus[*самсунг] :: 0.66666666
+        PhoneVendorRus  ->  Word[*самсунг]<kwt=телефон_производитель_рус> :: 0.66666666
+            Word  ->  самсунг :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.35
+S  ->  PhoneWord[*т] :: 0.66666666
+    PhoneWord  ->  Word[*т]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  т :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.34333333
+S  ->  PhoneVendor[*самсунг] :: 0.66666666
+    PhoneVendor  ->  PhoneVendorRus[*самсунг] :: 0.66666666
+        PhoneVendorRus  ->  Word[*самсунг]<kwt=телефон_производитель_рус> :: 0.66666666
+            Word  ->  самсунг :: 1
+
+
+
+==================== multiwords ====================
+
+самсунг: matter, 
+	телефон_производитель_рус, 
+т: matter, 
+	телефон_слово, 
+т_самсунг: TAuxDicArticle, 
+	телефон, 
+
+
+===================== matter/phone/phone.cxx =====================
+
+coverage: 2, weight: 0.34333333
+S  ->  PhoneWord[*т]  PhoneVendor[samsung] :: 0.43333333
+|   
+|__ PhoneWord  ->  Word[*т]<kwt=телефон_слово> :: 0.66666666
+|       Word  ->  т :: 1
+|   
+|__ PhoneVendor  ->  PhoneVendorEng[*samsung] :: 0.66666666
+        PhoneVendorEng  ->  Word[*samsung]<kwt=телефон_производитель_англ> :: 0.66666666
+            Word  ->  samsung :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.35
+S  ->  PhoneWord[*т] :: 0.66666666
+    PhoneWord  ->  Word[*т]<kwt=телефон_слово> :: 0.66666666
+        Word  ->  т :: 1
+
+DROPPED OCCURRENCE, coverage: 1, weight: 0.34333333
+S  ->  PhoneVendor[*samsung] :: 0.66666666
+    PhoneVendor  ->  PhoneVendorEng[*samsung] :: 0.66666666
+        PhoneVendorEng  ->  Word[*samsung]<kwt=телефон_производитель_англ> :: 0.66666666
+            Word  ->  samsung :: 1
+
+
+
+==================== multiwords ====================
+
+samsung: matter, 
+	телефон_производитель_англ, 
+т: matter, 
+	телефон_слово, 
+т_samsung: TAuxDicArticle, 
+	телефон, 
+
+
+===================== matter/phone/phone.cxx =====================
 
 coverage: 2, weight: 0.34333333
 S  ->  PhoneWord[*тел]  PhoneVendor[samsung] :: 0.43333333
@@ -425,7 +495,7 @@ samsung: matter,
 	телефон, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.35
 S  ->  PhoneVendor[*samsung] :: 0.66666666
@@ -441,7 +511,7 @@ samsung: TAuxDicArticle, matter,
 	телефон, телефон_производитель_англ, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.35
 S  ->  PhoneUserDefinedName[*айфон6s] :: 0.66666666
@@ -456,7 +526,7 @@ S  ->  PhoneUserDefinedName[*айфон6s] :: 0.66666666
 	телефон, телефон_пользовательское_название, 
 
 
-===================== matter/phone.cxx =====================
+===================== matter/phone/phone.cxx =====================
 
 coverage: 1, weight: 0.35
 S  ->  PhoneUserDefinedName[*айфон6s] :: 0.66666666

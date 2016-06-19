@@ -3,25 +3,25 @@ encoding "utf8";
 import "kwtypes.proto";
 
 matter "телефон_слово" {
-	 key = { "matter/phone_word.txt" type=FILE }
-	 lemma = "телефон"
+	key = { "matter/phone/phone_word.txt" type=FILE }
+	lemma = "телефон"
 }
 
 matter "телефон_производитель_рус" {
-	key = { "matter/phone_vendor_rus.txt" type=FILE}
+	key = { "matter/phone/phone_vendor_rus.txt" type=FILE}
 }
 
 matter "телефон_производитель_англ" {
-	key = { "matter/phone_vendor_eng.txt" type=FILE}
+	key = { "matter/phone/phone_vendor_eng.txt" type=FILE}
 }
 
 /* Попробую пока чисто с грамматиками
 matter "телефон_модель" {
-	key = { "matter/phone_model_eng.txt" type=FILE}
+	key = { "matter/phone/phone_model_eng.txt" type=FILE}
 }
 */
 
 matter "телефон_пользовательское_название" {
-	key = { "matter/phone_user_defined_name.txt" type=FILE}
+	key = { "matter/phone/phone_user_defined_name.txt" type=FILE}
 }
 
