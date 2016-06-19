@@ -6,7 +6,9 @@ PhoneVendorRus -> Word<kwtype="телефон_производитель_рус"
 PhoneVendorEng -> Word<kwtype="телефон_производитель_англ">;
 PhoneVendor -> PhoneVendorRus | PhoneVendorEng;
 
-PhoneModel -> UnknownPOS+ AnyWord<wfl=/(\w{0,8}\d{0,8})|(\d{0,8}\w{0,8})/>;
+// PhoneModel -> UnknownPOS+;
+// PhoneModel -> UnknownPOS<wff=/(?=.*\d)[\w\d\- ]{4,20}/>+;
+PhoneModel -> UnknownPOS* AnyWord<wff=/\w\d/>+;
 
 PhoneUserDefinedName -> AnyWord<kwtype="телефон_пользовательское_название">;
 
