@@ -10,12 +10,14 @@ message CustomerPlace : NFactType.TFact {
 	required string Place = 1;
 }
 
-/*
-message Matter : NFactType.TFact {
-	required string Type = 1;
+message Action : NFactType.TFact {
+	required string Word = 1;
 	extensions 2 to 10;
 }
-*/
+
+message Buy : Action {
+	optional string Number = 2;
+}
 
 
 // Если хотя бы одно из полей заполнено - то это успех

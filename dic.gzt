@@ -5,6 +5,7 @@ import "articles_base.proto";  // Файлы base.proto и articles_base.proto �
 import "fact_types.proto";
 
 import "matter/matter.gzt";
+import "action/action.gzt";
 
 TAuxDicArticle "клиент_телефон" {
 	key = {"tomita:customer/phone.cxx" type = CUSTOM}
@@ -20,4 +21,8 @@ TAuxDicArticle "телефон" {
 
 TAuxDicArticle "ноутбук" {
 	key = {"tomita:matter/notebook/notebook.cxx" type = CUSTOM}
+}
+
+TAuxDicArticle "купить" {
+	key = {"tomita:action/buy.cxx" type = CUSTOM}
 }

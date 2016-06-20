@@ -1,0 +1,9 @@
+encoding "utf8";
+
+import "kwtypes.proto";
+
+action "купить_слово" {
+	key = 'купить' | 'куп' | 'к' | 'buy' | 'b' | 'купля' | 'покупка' | 'покуп';
+	lemma = "buy"
+}
+
