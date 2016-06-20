@@ -16,7 +16,7 @@ message Action : NFactType.TFact {
 }
 
 message Buy : Action {
-	optional string Number = 2;
+	optional string NumberInPrice = 2;
 }
 
 message Pawn : Action {

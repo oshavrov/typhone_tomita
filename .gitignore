@@ -1,5 +1,8 @@
 *.bin
 *.html
+*.xml
+*.txt
 IO/output.txt
+IO/.*/
 tree.txt
 rules.txt
