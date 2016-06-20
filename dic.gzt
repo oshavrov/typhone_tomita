@@ -6,7 +6,6 @@ import "fact_types.proto";
 
 import "matter/matter.gzt";
 
-/*
 TAuxDicArticle "клиент_телефон" {
 	key = {"tomita:customer/phone.cxx" type = CUSTOM}
 }
@@ -14,7 +13,6 @@ TAuxDicArticle "клиент_телефон" {
 TAuxDicArticle "клиент_место" {
 	key = {"tomita:customer/place.cxx" type = CUSTOM}
 }
-*/
 
 TAuxDicArticle "телефон" {
 	key = {"tomita:matter/phone/phone.cxx" type = CUSTOM}

@@ -1,7 +1,7 @@
 import "base.proto";           // описание protobuf-типов
 import "facttypes_base.proto"; // описание protobuf-типа NFactType.TFact
 
-/*
+
 message CustomerPhone : NFactType.TFact {
 	required string Phone = 1;
 }
@@ -10,13 +10,15 @@ message CustomerPlace : NFactType.TFact {
 	required string Place = 1;
 }
 
+/*
 message Matter : NFactType.TFact {
 	required string Type = 1;
 	extensions 2 to 10;
 }
 */
 
-// Если хотя бы одно из полей заполнено - то успех
+
+// Если хотя бы одно из полей заполнено - то это успех
 message Phone : NFactType.TFact {
 	optional string Word = 1 [default = "телефон"];
 	optional string Vendor = 2;

@@ -1,6 +1,6 @@
 #encoding "utf-8"
 #GRAMMAR_ROOT S
 
-CallPlace -> Word<wff=/уу/>;
+CallPlace -> 'уу' | 'улан-удэ' | 'якутия' | 'якутск';
 
 S -> CallPlace interp(CustomerPlace.Place);
