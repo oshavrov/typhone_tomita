@@ -19,11 +19,15 @@ TTextMinerConfig {
 		{Name = "клиент_место"}
 		{Name = "клиент_телефон"}
 		{Name = "телефон"}
+		{Name = "ноутбук"}		
 	]
 
 	Facts = [
 		{Name = "CustomerPlace"}
 		{Name = "CustomerPhone"}
 		{Name = "Phone"}
+		{Name = "PhoneFromPrice"}
+		{Name = "Notebook"}
+		{Name = "NotebookFromPrice"}
 	]
 }

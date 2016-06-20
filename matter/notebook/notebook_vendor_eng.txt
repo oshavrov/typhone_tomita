@@ -1,0 +1,13 @@
+samsung
+lenovo
+asus
+acer
+hp
+dns
+sony
+toshiba
+dell
+emachines
+pacard bell
+macbook
+apple

@@ -25,3 +25,19 @@ message Phone : NFactType.TFact {
 	optional string Model = 3;
 	optional string UserDefinedName = 4;
 }
+
+message PhoneFromPrice : NFactType.TFact {
+	required string NumberInPrice = 1;
+}
+
+// Если хотя бы одно из полей заполнено - то это успех
+message Notebook : NFactType.TFact {
+	optional string Word = 1 [default = "ноутбук"];
+	optional string Vendor = 2;
+	optional string Model = 3;
+	optional string UserDefinedName = 4;
+}
+
+message NotebookFromPrice : NFactType.TFact {
+	required string NumberInPrice = 1;
+}
