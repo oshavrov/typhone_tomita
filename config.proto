@@ -26,8 +26,6 @@ TTextMinerConfig {
 		{Name = "CustomerPlace"}
 		{Name = "CustomerPhone"}
 		{Name = "Phone"}
-		{Name = "PhoneFromPrice"}
 		{Name = "Notebook"}
-		{Name = "NotebookFromPrice"}
 	]
 }
