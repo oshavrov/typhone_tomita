@@ -20,7 +20,8 @@ TTextMinerConfig {
 		{Name = "клиент_телефон"}
 		{Name = "телефон"}
 		{Name = "ноутбук"}		
-		{Name = "купить"}		
+		{Name = "купить"}	
+		{Name = "ломбард"}	
 	]
 
 	Facts = [
@@ -29,5 +30,6 @@ TTextMinerConfig {
 		{Name = "Phone"}
 		{Name = "Notebook"}
 		{Name = "Buy"}
+		{Name = "Pawn"}
 	]
 }

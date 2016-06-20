@@ -1,10 +1,9 @@
-samsung
 lenovo
 asus
 acer
 hp
 dns
-sony
+sony vaio
 toshiba
 dell
 emachines

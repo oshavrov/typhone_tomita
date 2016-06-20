@@ -19,6 +19,10 @@ message Buy : Action {
 	optional string Number = 2;
 }
 
+message Pawn : Action {
+	optional string Matter = 2; 
+}
+
 
 // Если хотя бы одно из полей заполнено - то это успех
 message Phone : NFactType.TFact {

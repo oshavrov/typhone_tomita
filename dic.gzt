@@ -26,3 +26,7 @@ TAuxDicArticle "ноутбук" {
 TAuxDicArticle "купить" {
 	key = {"tomita:action/buy.cxx" type = CUSTOM}
 }
+
+TAuxDicArticle "ломбард" {
+	key = {"tomita:action/pawn.cxx" type = CUSTOM}
+}

@@ -4,6 +4,10 @@ import "kwtypes.proto";
 
 action "купить_слово" {
 	key = 'купить' | 'куп' | 'к' | 'buy' | 'b' | 'купля' | 'покупка' | 'покуп';
-	lemma = "buy"
+	lemma = "buy";
 }
 
+action "ломбард_слово" {
+	key = 'ломбард' | 'ломб' | 'л' | 'lomb' | 'pawn';
+	lemma = "pawn";
+}
