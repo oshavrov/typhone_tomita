@@ -2,6 +2,7 @@
 *.html
 *.xml
 *.txt
+*.xlsx
 IO/output.txt
 IO/.*/
 tree.txt
