@@ -15,7 +15,7 @@ message Action : NFactType.TFact {
 	extensions 2 to 10;
 }
 
-message Buy : Action {
+message BuyOut: Action {
 	optional string NumberInPrice = 2;
 }
 
