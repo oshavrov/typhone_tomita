@@ -23,7 +23,7 @@ TAuxDicArticle "ноутбук" {
 	key = {"tomita:matter/notebook/notebook.cxx" type = CUSTOM}
 }
 
-TAuxDicArticle "купить" {
+TAuxDicArticle "продажа" {
 	key = {"tomita:action/buy.cxx" type = CUSTOM}
 }
 
