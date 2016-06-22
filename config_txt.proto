@@ -29,7 +29,7 @@ TTextMinerConfig {
 		{Name = "CustomerPhone"}
 		{Name = "Phone"}
 		{Name = "Notebook"}
-		{Name = "BuyOut"}
+		{Name = "CustomerBuys"}
 		{Name = "Pawn"}
 	]
 }
