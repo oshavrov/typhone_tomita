@@ -19,6 +19,10 @@ message CustomerBuys: Action {
 	optional string NumberInPrice = 2;
 }
 
+message CustomerSells : Action {
+	optional string Matter = 2;
+}
+
 message Pawn : Action {
 	optional string Matter = 2; 
 }

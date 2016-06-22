@@ -27,6 +27,8 @@ TAuxDicArticle "продажа" {
 	key = {"tomita:action/prodazha.cxx" type = CUSTOM}
 }
 
+
 TAuxDicArticle "ломбард" {
 	key = {"tomita:action/pawn.cxx" type = CUSTOM}
 }
+

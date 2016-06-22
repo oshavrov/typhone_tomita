@@ -11,3 +11,8 @@ action "ломбард_слово" {
 	key = 'ломбард' | 'ломб' | 'л' | 'lomb' | 'lombard' | 'pawn';
 	lemma = "pawn";
 }
+
+action "продать_слово": {
+	key = 'продать' | 'прод' | 'sell' | 's';
+	lemma = "sell";
+}
