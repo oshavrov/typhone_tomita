@@ -1,7 +1,7 @@
 encoding "utf8";
 
 TTextMinerConfig {
-	Dictionary = "dic.gzt";
+	Dictionary = "mydick.gzt";
 	PrettyOutput = "pretty.html";
 	PrintTree="tree.txt";
 	PrintRules="rules.txt";

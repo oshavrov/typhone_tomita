@@ -12,7 +12,7 @@ action "ломбард_слово" {
 	lemma = "pawn";
 }
 
-action "продать_слово": {
+action "продать_слово" {
 	key = 'продать' | 'прод' | 'sell' | 's';
 	lemma = "sell";
 }
