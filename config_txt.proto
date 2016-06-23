@@ -7,7 +7,7 @@ TTextMinerConfig {
 	PrintRules="rules.txt";
 
 	Input = {
-		File = "IO/manual_input.txt";
+		File = "IO/preprocessed_input.txt";
 	}
 
 	Output = {

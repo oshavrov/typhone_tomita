@@ -7,7 +7,7 @@ TTextMinerConfig {
 	PrintRules="rules.txt";
 
 	Input = {
-		File = "IO/garant_input.txt";
+		File = "IO/preprocessed_input.txt";
 	}
 
 	Output = {
@@ -20,7 +20,8 @@ TTextMinerConfig {
 		{Name = "клиент_телефон"}
 		{Name = "телефон"}
 		{Name = "ноутбук"}		
-		{Name = "купить"}	
+		{Name = "продажа"}	
+		{Name = "выкуп"}	
 		{Name = "ломбард"}	
 	]
 
@@ -29,7 +30,8 @@ TTextMinerConfig {
 		{Name = "CustomerPhone"}
 		{Name = "Phone"}
 		{Name = "Notebook"}
-		{Name = "Buy"}
+		{Name = "CustomerBuys"}
+		{Name = "CustomerSells"}
 		{Name = "Pawn"}
 	]
 }
