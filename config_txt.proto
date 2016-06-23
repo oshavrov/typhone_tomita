@@ -18,6 +18,7 @@ TTextMinerConfig {
 	Articles = [
 		{Name = "клиент_место"}
 		{Name = "клиент_телефон"}
+		{Name = "дата"}
 		{Name = "телефон"}
 		{Name = "ноутбук"}		
 		{Name = "продажа"}	
@@ -28,6 +29,7 @@ TTextMinerConfig {
 	Facts = [
 		{Name = "CustomerPlace"}
 		{Name = "CustomerPhone"}
+		{Name = "CallDate"}
 		{Name = "Phone"}
 		{Name = "Notebook"}
 		{Name = "CustomerBuys"}
