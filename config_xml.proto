@@ -1,0 +1,39 @@
+encoding "utf8";
+
+TTextMinerConfig {
+	Dictionary = "dic.gzt";
+	PrettyOutput = "pretty.html";
+	PrintTree="tree.txt";
+	PrintRules="rules.txt";
+
+	Input = {
+		File = "IO/preprocessed_input.txt";
+	}
+
+	Output = {
+		File = "IO/output.xml";
+		Format = xml;
+	}
+
+	Articles = [
+		{Name = "клиент_место"}
+		{Name = "клиент_телефон"}
+		{Name = "дата"}
+		{Name = "телефон"}
+		{Name = "ноутбук"}		
+		{Name = "продажа"}	
+		{Name = "выкуп"}	
+		{Name = "ломбард"}	
+	]
+
+	Facts = [
+		{Name = "CustomerPlace"}
+		{Name = "CustomerPhone"}
+		{Name = "CallDate"}
+		{Name = "Phone"}
+		{Name = "Notebook"}
+		{Name = "CustomerBuys"}
+		{Name = "CustomerSells"}
+		{Name = "Pawn"}
+	]
+}
