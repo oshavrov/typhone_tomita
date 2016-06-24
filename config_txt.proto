@@ -22,7 +22,8 @@ TTextMinerConfig {
 		{Name = "телефон"}
 		{Name = "ноутбук"}		
 		{Name = "продажа"}	
-		{Name = "выкуп"}	
+		{Name = "выкуп"}
+		{Name = "ремонт"}
 		{Name = "ломбард"}	
 	]
 
@@ -34,6 +35,7 @@ TTextMinerConfig {
 		{Name = "Notebook"}
 		{Name = "CustomerBuys"}
 		{Name = "CustomerSells"}
+		{Name = "Repare"}
 		{Name = "Pawn"}
 	]
 }

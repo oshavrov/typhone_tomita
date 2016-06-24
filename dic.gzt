@@ -38,3 +38,7 @@ TAuxDicArticle "выкуп" {
 TAuxDicArticle "ломбард" {
     key = {"tomita:action/pawn.cxx" type = CUSTOM}
 }
+
+TAuxDicArticle "ремонт" {
+	key = {"tomita:action/repare.cxx" type = CUSTOM}
+}

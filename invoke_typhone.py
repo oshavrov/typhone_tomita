@@ -28,7 +28,7 @@ def threat_dates_in_input(input_filename, output_filename):
             date_string = line
         else:
             if line:
-                preprocessed_input.write(date_string + " " + line + "\n")
+                preprocessed_input.write(date_string + " " + line + ".\n")
             else:
                 print("blank line found > ", line)
     f.close()
