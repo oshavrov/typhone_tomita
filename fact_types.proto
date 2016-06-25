@@ -36,7 +36,16 @@ message Pawn : Action {
 }
 
 
+
 // Если хотя бы одно из полей заполнено - то это успех
+
+message Matter : NFactType.TFact {
+	optional string Phone = 1;
+	optional string Notebook = 2;
+	optional string Tablet = 3;
+	optional string Other = 4;
+}
+
 message Phone : NFactType.TFact {
 	optional string Word = 1 [default = "телефон"];
 	optional string Vendor = 2;

@@ -16,26 +16,10 @@ TTextMinerConfig {
 	}
 
 	Articles = [
-		{Name = "клиент_место"}
-		{Name = "клиент_телефон"}
-		{Name = "дата"}
-		{Name = "телефон"}
-		{Name = "ноутбук"}		
-		{Name = "продажа"}	
-		{Name = "выкуп"}
-		{Name = "ремонт"}
-		{Name = "ломбард"}	
+		{Name = "предмет"}
 	]
 
 	Facts = [
-		{Name = "CustomerPlace"}
-		{Name = "CustomerPhone"}
-		{Name = "CallDate"}
-		{Name = "Phone"}
-		{Name = "Notebook"}
-		{Name = "CustomerBuys"}
-		{Name = "CustomerSells"}
-		{Name = "Repare"}
-		{Name = "Pawn"}
+		{Name = "Matter"}
 	]
 }
