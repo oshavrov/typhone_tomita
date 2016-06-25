@@ -3,3 +3,4 @@ iphone
 lenovo
 htc
 sony
+meizu
