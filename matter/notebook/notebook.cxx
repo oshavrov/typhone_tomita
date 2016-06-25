@@ -1,16 +1,16 @@
 #encoding "utf8"
 
-NotebookWord -> Word<kwtype="ноутбук_слово"> interp(Notebook.Word);
+NotebookWord -> Word<kwtype="ноутбук_слово">;
 
 NotebookVendorRus -> Word<kwtype="ноутбук_производитель_рус">;
 NotebookVendorEng -> Word<kwtype="ноутбук_производитель_англ">;
 NV -> NotebookVendorRus | NotebookVendorEng;
-NotebookVendor -> NV interp(Notebook.Vendor);
+NotebookVendor -> NV;
 
 NotebookModel -> UnknownPOS* AnyWord<wff=/\w\d.*\s/>;
 
-NotebookUserDefinedName -> AnyWord<kwtype="ноутбук_пользовательское_название"> interp(Notebook.UserDefinedName);
+NotebookUserDefinedName -> AnyWord<kwtype="ноутбук_пользовательское_название">;
 
-S -> NotebookWord (NotebookVendor) (NotebookModel interp(Notebook.Model));
-S -> (NotebookWord) NotebookVendor (NotebookModel interp(Notebook.Model));
+S -> NotebookWord (NotebookVendor) (NotebookModel);
+S -> (NotebookWord) NotebookVendor (NotebookModel);
 S -> NotebookUserDefinedName (NotebookWord);

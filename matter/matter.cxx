@@ -1,6 +1,7 @@
 #encoding "utf8"
 
-Phone -> Word<kwtype="телефон">;
-Laptop -> Word<kwtype="ноутбук">;
+Phone -> AnyWord<kwtype="телефон">;
+Laptop -> AnyWord<kwtype="ноутбук">;
 
-S -> Phone interp(Matter.Phone) | Laptop interp(Matter.Notebook);
+S -> Phone interp(Matter.Phone);
+S -> Laptop interp(Matter.Notebook);

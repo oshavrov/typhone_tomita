@@ -1,22 +1,19 @@
 encoding "utf8";
-
 import "kwtypes.proto";
 
-
-
 matter "ноутбук_слово" {
-	key = { "matter/notebook/notebook_word.txt" type=FILE }
+	key = { "matter/notebook/names/notebook_word.txt" type=FILE }
 	lemma = "ноутбук"
 }
 
 matter "ноутбук_производитель_рус" {
-	key = { "matter/notebook/notebook_vendor_rus.txt" type=FILE}
+	key = { "matter/notebook/names/notebook_vendor_rus.txt" type=FILE}
 }
 
 matter "ноутбук_производитель_англ" {
-	key = { "matter/notebook/notebook_vendor_eng.txt" type=FILE}
+	key = { "matter/notebook/names/notebook_vendor_eng.txt" type=FILE}
 }
 
 matter "ноутбук_пользовательское_название" {
-	key = { "matter/notebook/notebook_user_defined_name.txt" type=FILE}
+	key = { "matter/notebook/names/notebook_user_defined_name.txt" type=FILE}
 }
