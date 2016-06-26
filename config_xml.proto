@@ -19,9 +19,8 @@ TTextMinerConfig {
 		{Name = "клиент_место"}
 		{Name = "клиент_телефон"}
 		{Name = "дата"}
-		{Name = "телефон"}
-		{Name = "ноутбук"}		
-		{Name = "продажа"}	
+		{Name = "предмет"}
+		{Name = "продажа"}
 		{Name = "выкуп"}
 		{Name = "ремонт"}
 		{Name = "ломбард"}	
@@ -31,8 +30,7 @@ TTextMinerConfig {
 		{Name = "CustomerPlace"}
 		{Name = "CustomerPhone"}
 		{Name = "CallDate"}
-		{Name = "Phone"}
-		{Name = "Notebook"}
+		{Name = "Matter"}
 		{Name = "CustomerBuys"}
 		{Name = "CustomerSells"}
 		{Name = "Repare"}

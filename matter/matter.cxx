@@ -10,4 +10,4 @@ S -> Phone interp(Matter.Phone);
 S -> Laptop interp(Matter.Notebook);
 S -> Tablet interp(Matter.Tablet::not_norm);
 S -> TV interp(Matter.TV);
-S -> OtherMatter interp(Matter.Other);
+S -> OtherMatter interp(Matter.Other::not_norm);
