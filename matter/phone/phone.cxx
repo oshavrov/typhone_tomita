@@ -13,4 +13,5 @@ PhoneUserDefinedName -> AnyWord<kwtype='**телефон_пользовател�
 S -> PhoneWord (PhoneVendor) (PhoneModel) (PhoneWord);
 S -> (PhoneWord) PhoneVendor (PhoneModel) (PhoneWord);
 S -> PhoneUserDefinedName (PhoneVendor) (PhoneWord);
+S -> (PhoneVendor) PhoneUserDefinedName;
 S -> PhoneUserDefinedName;

@@ -5,6 +5,7 @@ import "fact_types.proto";
 
 import "matter/phone/phone.gzt";
 import "matter/notebook/notebook.gzt";
+import "matter/tablet/tablet.gzt";
 import "action/action.gzt";
 import "time/date.gzt";
 
@@ -15,6 +16,10 @@ TAuxDicArticle "телефон" {
 
 TAuxDicArticle "ноутбук" {
     key = {"tomita:matter/notebook/notebook.cxx" type = CUSTOM}
+}
+
+TAuxDicArticle "планшет" {
+    key = {"tomita:matter/tablet/tablet.cxx" type = CUSTOM}
 }
 
 TAuxDicArticle "предмет" {

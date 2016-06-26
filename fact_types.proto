@@ -41,7 +41,8 @@ message Matter : NFactType.TFact {
 	optional string Phone = 1;
 	optional string Notebook = 2;
 	optional string Tablet = 3;
-	optional string Other = 4;
+	optional string TV = 4;
+	optional string Other = 5;
 }
 
 message Phone : NFactType.TFact {

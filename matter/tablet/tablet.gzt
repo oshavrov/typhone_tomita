@@ -1,0 +1,27 @@
+encoding "utf8";
+
+import "kwtypes.proto";
+
+matter "планшет_слово" {
+	key = { "matter/tablet/names/tablet_word.txt" type=FILE }
+	lemma = "планшет"
+}
+
+matter "планшет_производитель_рус" {
+	key = { "matter/tablet/names/tablet_vendor_rus.txt" type=FILE}
+}
+
+matter "планшет_производитель_англ" {
+	key = { "matter/tablet/names/tablet_vendor_eng.txt" type=FILE}
+}
+
+matter "планшет_пользовательское_название" {
+	key = { "matter/tablet/names/tablet_user_defined_name.txt" type=FILE}
+}
+
+
+/* Попробую пока чисто с грамматиками
+matter "планшет_модель" {
+	key = { "matter/tablet/names/tablet_model_eng.txt" type=FILE}
+}
+*/
