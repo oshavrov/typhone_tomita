@@ -1,0 +1,27 @@
+encoding "utf8";
+
+import "kwtypes.proto";
+
+matter "телевизор_слово" {
+	key = { "matter/tv/names/tv_word.txt" type=FILE }
+	lemma = "телевизор"
+}
+
+matter "телевизор_производитель_рус" {
+	key = { "matter/tv/names/tv_vendor_rus.txt" type=FILE}
+}
+
+matter "телевизор_производитель_англ" {
+	key = { "matter/tv/names/tv_vendor_eng.txt" type=FILE}
+}
+
+matter "телевизор_пользовательское_название" {
+	key = { "matter/tv/names/tv_user_defined_name.txt" type=FILE}
+}
+
+
+/* Попробую пока чисто с грамматиками
+matter "телевизор_модель" {
+	key = { "matter/tv/names/tv_model_eng.txt" type=FILE}
+}
+*/

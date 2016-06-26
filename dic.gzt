@@ -6,9 +6,14 @@ import "fact_types.proto";
 import "matter/phone/phone.gzt";
 import "matter/notebook/notebook.gzt";
 import "matter/tablet/tablet.gzt";
+import "matter/tv/tv.gzt";
 import "action/action.gzt";
 import "time/date.gzt";
 
+
+TAuxDicArticle "предмет" {
+	key = {"tomita:matter/matter.cxx", type=CUSTOM}
+}
 
 TAuxDicArticle "телефон" {
     key = { "tomita:matter/phone/phone.cxx" type = CUSTOM}
@@ -22,6 +27,7 @@ TAuxDicArticle "планшет" {
     key = {"tomita:matter/tablet/tablet.cxx" type = CUSTOM}
 }
 
-TAuxDicArticle "предмет" {
-	key = {"tomita:matter/matter.cxx", type=CUSTOM}
+TAuxDicArticle "телевизор" {
+    key = {"tomita:matter/tv/tv.cxx" type = CUSTOM}
 }
+
