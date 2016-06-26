@@ -1,0 +1,13 @@
+encoding "utf8";
+
+import "kwtypes.proto";
+
+action "место_бурятия" {
+	key = 'уу' | 'улан-удэ' | 'бурятия' | 'бур' | 'bur' | 'buryatia';
+	lemma = "бурятия";
+}
+
+action "место_якутия" {
+	key = 'якутия' | 'якутск' | 'ykt' | 'як';
+	lemma = "якутия"
+}
