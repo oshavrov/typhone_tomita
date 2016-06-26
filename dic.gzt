@@ -7,6 +7,7 @@ import "matter/phone/phone.gzt";
 import "matter/notebook/notebook.gzt";
 import "matter/tablet/tablet.gzt";
 import "matter/tv/tv.gzt";
+import "matter/other/other.gzt";
 import "action/action.gzt";
 import "time/date.gzt";
 
@@ -31,3 +32,6 @@ TAuxDicArticle "телевизор" {
     key = {"tomita:matter/tv/tv.cxx" type = CUSTOM}
 }
 
+TAuxDicArticle "другой_предмет" {
+    key = {"tomita:matter/other/other.cxx" type = CUSTOM}
+}

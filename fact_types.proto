@@ -35,14 +35,16 @@ message Pawn : Action {
 	optional string Matter = 2; 
 }
 
-
-
 message Matter : NFactType.TFact {
 	optional string Phone = 1;
 	optional string Notebook = 2;
 	optional string Tablet = 3;
 	optional string TV = 4;
 	optional string Other = 5;
+}
+
+message Other : NFactType.TFact {
+	required string Name = 1;
 }
 
 message Phone : NFactType.TFact {
