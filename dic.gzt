@@ -3,10 +3,16 @@ import "base.proto";           // подключаем описания protobuf
 import "articles_base.proto";  // Файлы base.proto и articles_base.proto встроены в компилятор.
 import "fact_types.proto";
 
-import "matter/matter.gzt";
-import "action/action.gzt";
 import "time/date.gzt";
+import "matter/phone/phone.gzt";
+import "matter/notebook/notebook.gzt";
+import "matter/tablet/tablet.gzt";
+import "matter/tv/tv.gzt";
+import "matter/other/other.gzt";
+import "action/action.gzt";
 
+
+// BEGIN КЛИЕНТ
 TAuxDicArticle "клиент_телефон" {
     key = {"tomita:customer/phone.cxx" type = CUSTOM}
 }
@@ -18,15 +24,10 @@ TAuxDicArticle "клиент_место" {
 TAuxDicArticle "дата" {
 	key = {"tomita:time/date.cxx", type = CUSTOM}
 }
+// END КЛИЕНТ
 
-TAuxDicArticle "телефон" {
-    key = { "tomita:matter/phone/phone.cxx" type = CUSTOM}
-}
 
-TAuxDicArticle "ноутбук" {
-    key = {"tomita:matter/notebook/notebook.cxx" type = CUSTOM}
-}
-
+// BEGIN ДЕЙСТВИЕ
 TAuxDicArticle "продажа" {
     key = {"tomita:action/prodazha.cxx" type = CUSTOM}
 }
@@ -42,3 +43,35 @@ TAuxDicArticle "ломбард" {
 TAuxDicArticle "ремонт" {
 	key = {"tomita:action/repare.cxx" type = CUSTOM}
 }
+// END ДЕЙСТВИЕ
+
+
+// BEGIN ПРЕДМЕТ
+TAuxDicArticle "предмет" {
+	key = {"tomita:matter/matter.cxx", type=CUSTOM}
+}
+
+TAuxDicArticle "телефон" {
+    key = { "tomita:matter/phone/phone.cxx" type = CUSTOM}
+}
+
+TAuxDicArticle "ноутбук" {
+    key = {"tomita:matter/notebook/notebook.cxx" type = CUSTOM}
+}
+
+TAuxDicArticle "планшет" {
+    key = {"tomita:matter/tablet/tablet.cxx" type = CUSTOM}
+}
+
+TAuxDicArticle "телевизор" {
+    key = {"tomita:matter/tv/tv.cxx" type = CUSTOM}
+}
+
+TAuxDicArticle "другой_предмет" {
+    key = {"tomita:matter/other/other.cxx" type = CUSTOM}
+}
+// END ПРЕДМЕТ
+
+
+
+
