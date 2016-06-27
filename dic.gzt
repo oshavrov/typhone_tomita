@@ -5,6 +5,7 @@ import "fact_types.proto";
 
 import "time/date.gzt";
 import "customer/place.gzt";
+import "customer/communications.gzt";
 import "matter/phone/phone.gzt";
 import "matter/notebook/notebook.gzt";
 import "matter/tablet/tablet.gzt";
@@ -21,6 +22,10 @@ TAuxDicArticle "клиент_телефон" {
 
 TAuxDicArticle "клиент_место" {
     key = {"tomita:customer/place.cxx" type = CUSTOM}
+}
+
+TAuxDicArticle "тип_коммуникации" {
+    key = {"tomita:customer/communication.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "дата" {

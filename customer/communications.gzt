@@ -1,0 +1,18 @@
+encoding "utf8";
+
+import "kwtypes.proto";
+
+communication_type "call" {
+	key = 'call';	
+	lemma = "call";
+}
+
+communication_type "sms" {
+	key = 'sms' | 'смс' | 'смска' | 'сообщение' | 'сообщ';
+	lemma = "sms"
+}
+
+communication_type "whatsapp" {
+	key = 'whatsapp' | 'wa' | 'ватсапп' | 'ва';
+	lemma = "whatsapp"
+}

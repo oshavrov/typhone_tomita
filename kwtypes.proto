@@ -1,6 +1,8 @@
 import "base.proto";
 import "articles_base.proto";
 
+message communication_type : TAuxDicArticle {}
+
 message action : TAuxDicArticle {}
 
 message matter : TAuxDicArticle {}

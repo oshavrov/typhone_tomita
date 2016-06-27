@@ -4,11 +4,19 @@ import "facttypes_base.proto"; // описание protobuf-типа NFactType.T
 
 message CustomerPhone : NFactType.TFact {
 	required string Phone = 1;
+	optional string message = 2;
 }
 
 message CustomerPlace : NFactType.TFact {
 	optional string Yakutia = 1;
 	optional string Buryatia = 2;
+}
+
+message Communication : NFactType.TFact {
+	optional string Call = 1;
+	optional string SMS = 2;
+	optional string WhatsApp = 3;
+	optional string Mail = 4;
 }
 
 message CallDate : NFactType.TFact {
