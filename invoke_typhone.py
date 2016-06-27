@@ -57,4 +57,6 @@ def invoke():
 
 if __name__ == "__main__":
     invoke()
+    print()
+    input("Нажмите Enter для выхода")
     
