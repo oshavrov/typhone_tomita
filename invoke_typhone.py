@@ -1,5 +1,9 @@
 import re
 import subprocess
+import sys
+import classifier
+import time
+
 
 DATE_TEMPLATE = re.compile(r'\d{2}\.\d{2}\.\d{4}')
 XML_CONFIG_NAME = "config_xml.proto"
@@ -41,12 +45,15 @@ def preprocess_input():
 def run_tomita():
     subprocess.call(["tomitaparser.exe", XML_CONFIG_NAME])
 
+
 def invoke():
+    start = time.time()
     move_txt_config_to_xml_one()
     preprocess_input()
     run_tomita()
-
-
+    classifier.classify()
+    end = time.time()
+    print("Затраченное время:", end - start, "сек.")
 
 if __name__ == "__main__":
     invoke()

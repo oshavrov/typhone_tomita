@@ -3,6 +3,9 @@
 *.xml
 *.txt
 *.xlsx
+*.exe
+__pycache__/
+.ipynb_checkpoints/
 IO/output.txt
 IO/.*/
 tree.txt
