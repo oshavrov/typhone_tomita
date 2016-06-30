@@ -12,6 +12,7 @@ TabletUserDefinedName -> AnyWord<kwtype='**планшет_пользовател
 
 S -> TabletWord (TabletVendor) (TabletModel) (TabletWord);
 S -> (TabletWord) TabletVendor (TabletModel) (TabletWord);
+S -> TabletVendor TabletWord; // асус планшет
 S -> TabletUserDefinedName (TabletVendor) (TabletWord);
 S -> TabletUserDefinedName;
 S -> (TabletWord) TabletUserDefinedName;

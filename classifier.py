@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[28]:
+# In[260]:
 
 import pandas as pd
 from pandas import DataFrame as df
@@ -16,16 +16,17 @@ import re
 
 
 
-# In[29]:
+# In[261]:
 
-DATE_TEMPLATE = re.compile(r'\d{2}\.\d{2}\.\d{4}')
+DATE_TEMPLATE = re.compile(r'\d{2}.\d{2}.\d{4}')
 
 INPUT_FILE = os.path.normpath(r'IO\output.xml')
 PREPROCESSED_INPUT = os.path.normpath(r'IO\preprocessed_input.txt')
 OUTPUT_EXCEL = os.path.normpath(r'IO\report.xlsx')
+SAME_CATEGORY_DELIMITER = r'__'
 
 
-# In[30]:
+# In[262]:
 
 tree = ET.parse(INPUT_FILE)
 
@@ -45,7 +46,7 @@ def make_dict_of_leads(root=root):
         remove_explicit_from_sentence(source_sentence)
 
         text = ''.join(source_sentence.itertext())
-        dict_of_leads[id] = re.sub(r'\.$', '', text.strip());
+        dict_of_leads[id] = re.sub(r'\.+$', '', text.strip());
     return dict_of_leads
 
 def remove_explicit_from_sentence(xml_sentence):
@@ -79,7 +80,7 @@ def remove_explicit_from_sentence(xml_sentence):
 """
 
 
-# In[31]:
+# In[263]:
 
 # todo: помнить о тексте лида. Там выделены факты прямо в разметке - полезно при выводе информации в веб-интерфейсе
 
@@ -121,22 +122,31 @@ def make_common_table():
             one_sentence = leads[lead]
             cols = ["lead_id", "conversation"]
             values = [lead, one_sentence]
-            for fact_name in elems:
-                for fact_field in fact_name:
-                    cols.append(fact_name.tag + "_" + fact_field.tag)
+            fact_num = 0;
+            for fact in elems:
+                for fact_field in fact:
+                    fact_name = fact.tag + "_" + fact_field.tag
+                    if fact_name not in cols:
+                        fact_num = 0;
+                    else:
+                        fact_name += SAME_CATEGORY_DELIMITER + str(fact_num )
+                        fact_num += 1
+                    cols.append(fact_name)
                     values.append(fact_field.attrib["val"])
             one_row = pd.DataFrame([values], columns=cols)
             calls = calls.append(one_row)
-
             values = []
             cols = []
         except ValueError as e:
+            print(cols, values)
+            print("Value Error", e)
             print(e)
             lineno = str(int(lead) + 2)
             строки_с_ошибками[int(lead) + 2] = leads[lead]
             print("Ошибка в строке " + lineno + " исходных данных.\n", leads[lead])
         except AssertionError as e:
-            print(e)
+
+            print("Assertion Error", e)
             lineno = str(int(lead) + 2)
             строки_с_ошибками[int(lead) + 2] = leads[lead]
             print("Ошибка в строке " + lineno + " исходных данных.\n", leads[lead])
@@ -147,12 +157,48 @@ def make_common_table():
     return calls
 
 
-# In[32]:
+# In[264]:
 
 calls = make_common_table()
+calls.to_excel("common_table.xlsx")
 
 
-# In[33]:
+# In[265]:
+
+
+
+        
+    
+def cols_with_same_category(source_df):
+    same_categories = dict()
+    for col in source_df.columns:
+        name_num = col.split(SAME_CATEGORY_DELIMITER)
+        if len(name_num) > 1:
+            col_name, col_number = col.split(SAME_CATEGORY_DELIMITER)
+            if col_number:
+                if same_categories.get(col_name):
+                    same_categories[col_name].append(col)
+                else:
+                    same_categories[col_name] = [col_name]
+                    same_categories[col_name].append(col)
+    return same_categories
+
+def merge_cols_with_same_contents(source_df):
+    cols_to_merge = cols_with_same_category(source_df)
+    for col in cols_to_merge.keys():
+        main_col_name = col[0]
+        source_df.concat()
+
+    return source_df
+    
+
+# cc = cols_with_same_category(calls)
+# c = cc["CustomerPhone_Phone"]
+
+# pd.merge(calls["Repare_Word"], calls["Repare_Word__0"], how="left")
+
+
+# In[266]:
 
 # Выбираю тут колонки, которые 
 
@@ -193,7 +239,7 @@ cols_for_ykt = [
 ]
 
 
-# In[34]:
+# In[267]:
 
 # Подготовка вывода для листа "Бурятия"
 
@@ -242,7 +288,7 @@ def prepare_for_smswhatsapp(all_calls):
 
 
 
-# In[35]:
+# In[268]:
 
 # cols = matter_except_usial
 # new_name = "Комплектующее"
@@ -257,7 +303,7 @@ def prepare_for_smswhatsapp(all_calls):
 # pd.concat([source_df, matter_other], axis=1)
 
 
-# In[36]:
+# In[269]:
 
 cols_for_buryatia = [
     [
@@ -292,7 +338,7 @@ cols_for_buryatia = [
 ]
 
 
-# In[37]:
+# In[270]:
 
 def make_excel():
     calls = make_common_table()
@@ -315,7 +361,7 @@ def make_excel():
     writer.save()
 
 
-# In[38]:
+# In[271]:
 
 def report():
     with open(PREPROCESSED_INPUT) as f:
@@ -326,14 +372,15 @@ def report():
     print("Строки с ошибками (необработано): ", строки_с_ошибками)
 
 
-# In[39]:
+# In[272]:
 
 def classify():
+    
     make_excel()
     report()
 
 
-# In[40]:
+# In[273]:
 
 if __name__ == "__main__":
     classify()

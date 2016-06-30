@@ -2,4 +2,5 @@
 
 RepareWord -> Word<kwtype="ремонт_слово">;
 
+
 RepareAction -> RepareWord interp(Repare.Word);
