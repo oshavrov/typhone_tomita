@@ -2,5 +2,5 @@
 
 CustomerBuysWord -> Word<kwtype="купить_слово">;
 
-CustomerBuysAction -> CustomerBuysWord interp(CustomerBuys.Word);
-CustomerBuysAction -> CustomerBuysWord interp(CustomerBuys.Word) AnyWord<wff=/\d{1,2}/> interp(CustomerBuys.NumberInPrice);
+CustomerBuysAction -> CustomerBuysWord interp(ActionType.Buy);
+CustomerBuysAction -> CustomerBuysWord interp(ActionType.Buy) AnyWord<wff=/\d{1,2}/> interp(ActionType.Buy);

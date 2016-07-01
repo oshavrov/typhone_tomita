@@ -2,4 +2,4 @@
 
 PawnWord -> Word<kwtype="ломбард_слово">;
 
-PawnAction -> PawnWord interp(Pawn.Word);
+PawnAction -> PawnWord interp(ActionType.Pawn);

@@ -6,7 +6,7 @@ import time
 import os.path
 import shutil
 
-SOURCE_DATE_TEMPLATE = re.compile(r'(\d{2})(?:/|\.)(\d{2})(?:/|\.)(\d{4}).?')
+SOURCE_DATE_TEMPLATE = re.compile(r'(\d{2})\.(\d{2})\.(\d{4}).?')
 INSIDE_DATE_TEMPLATE = re.compile(r'\d{2}/\d{2}/\d{4}')
 
 XML_CONFIG_NAME = "config_xml.proto"
@@ -32,16 +32,11 @@ def threat_dates_in_input(input_filename=TEXT_INPUT, output_filename=TEXT_OUTPUT
     preprocessed_input = open(output_filename, "w", encoding="utf8")
 
     date_string = ""
-    try:
-        file_iterator = f.read().splitlines()
-    except UnicodeDecodeException:
-        print("UnicodeDecodeException")
-        print("\a")
-    for line in file_iterator:
+    for line in f.read().splitlines():
         if re.match(SOURCE_DATE_TEMPLATE, line) is not None:
             date_string = re.sub(SOURCE_DATE_TEMPLATE, r'\1/\2/\3', line);
         else:
-            if re.match(r'.{3}', line):
+            if line:
                 prepared_string = date_string + " " + line
                 preprocessed_input.write(prepared_string + "\n")
 
@@ -64,6 +59,7 @@ def replace_dots_in_line(input_filename=TEXT_OUTPUT):
             without_dots = re.sub(r'\.(.)', r' \1', without_dots)
             # make date with dots back
             without_dots = re.sub(r'(\d{2})/(\d{2})/(\d{4})', r'\1.\2.\3', without_dots)
+            print(without_dots)
             preprocessed_input.write(without_dots + ".\n")
     f.close()
     preprocessed_input.close()
@@ -89,5 +85,6 @@ def invoke():
 
 if __name__ == "__main__":
     invoke()
-    
+    print()
+    input("Нажмите Enter для выхода")
     

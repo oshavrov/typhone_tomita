@@ -33,9 +33,6 @@ TTextMinerConfig {
 		{Name = "Communication"}		
 		{Name = "CallDate"}
 		{Name = "Matter"}
-		{Name = "CustomerBuys"}
-		{Name = "CustomerSells"}
-		{Name = "Repare"}
-		{Name = "Pawn"}
+		{Name = "ActionType"}
 	]
 }

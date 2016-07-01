@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[260]:
+# In[1]:
 
 import pandas as pd
 from pandas import DataFrame as df
@@ -16,7 +16,7 @@ import re
 
 
 
-# In[261]:
+# In[2]:
 
 DATE_TEMPLATE = re.compile(r'\d{2}.\d{2}.\d{4}')
 
@@ -24,9 +24,10 @@ INPUT_FILE = os.path.normpath(r'IO\output.xml')
 PREPROCESSED_INPUT = os.path.normpath(r'IO\preprocessed_input.txt')
 OUTPUT_EXCEL = os.path.normpath(r'IO\report.xlsx')
 SAME_CATEGORY_DELIMITER = r'__'
+EMPTY_COLS = ["Комплектация", "Цена клиента", "Наша цена", "Утилизация", "Решение клиента"]
 
 
-# In[262]:
+# In[3]:
 
 tree = ET.parse(INPUT_FILE)
 
@@ -80,7 +81,7 @@ def remove_explicit_from_sentence(xml_sentence):
 """
 
 
-# In[263]:
+# In[4]:
 
 # todo: помнить о тексте лида. Там выделены факты прямо в разметке - полезно при выводе информации в веб-интерфейсе
 
@@ -96,22 +97,7 @@ def compare_facts_to_leads(root=root):
     return facts_grouped_by_lead
 
 def make_common_table():
-    appendix = [
-        "CustomerBuys_Word",
-        "CustomerSells_Word",
-        "Pawn_Word",
-        "Repare_Word",
-        "Matter_Notebook",
-        "Matter_Phone",
-        "Matter_Tablet",
-        "Matter_TV",
-        "Matter_Other",
-        "CustomerPlace_Yakutia",
-        "CustomerPlace_Buryatia",
-        "Communication_SMS",
-        "Communication_WhatsApp",
-     ]
-    calls = df(columns=appendix)
+    calls = df()
     
     facts = compare_facts_to_leads()
     leads = make_dict_of_leads()
@@ -157,230 +143,187 @@ def make_common_table():
     return calls
 
 
-# In[264]:
+# In[5]:
 
-calls = make_common_table()
-calls.to_excel("common_table.xlsx")
-
-
-# In[265]:
+# calls = make_common_table()
+# calls.to_excel("common_table.xlsx")
+# calls.columns
 
 
+# In[6]:
 
-        
-    
-def cols_with_same_category(source_df):
-    same_categories = dict()
-    for col in source_df.columns:
-        name_num = col.split(SAME_CATEGORY_DELIMITER)
-        if len(name_num) > 1:
-            col_name, col_number = col.split(SAME_CATEGORY_DELIMITER)
-            if col_number:
-                if same_categories.get(col_name):
-                    same_categories[col_name].append(col)
-                else:
-                    same_categories[col_name] = [col_name]
-                    same_categories[col_name].append(col)
-    return same_categories
+def join_cols(source_df, cols):
+    to_col = cols[0]
+    for c in cols[1:]:
+        source_df[to_col].fillna(source_df[c], inplace=True)
 
-def merge_cols_with_same_contents(source_df):
-    cols_to_merge = cols_with_same_category(source_df)
-    for col in cols_to_merge.keys():
-        main_col_name = col[0]
-        source_df.concat()
+def prepare_for_vikup(source_df, cols_to_include):
+    to_handle = source_df.copy(deep=True)
+    to_handle = to_handle[to_handle["ActionType_Sell"].notnull()]
+    cols_to_merge = ["Matter_Other", "Matter_TV"]
+    join_cols(to_handle, cols_to_merge)
+    return df(to_handle, columns=cols_to_include)
 
-    return source_df
-    
-
-# cc = cols_with_same_category(calls)
-# c = cc["CustomerPhone_Phone"]
-
-# pd.merge(calls["Repare_Word"], calls["Repare_Word__0"], how="left")
+def prepare_for_prodazha(source_df, cols_to_include):
+    to_handle = source_df.copy(deep=True)
+    to_handle = to_handle[to_handle["ActionType_Buy"].notnull()]
+    cols_to_merge = ["Matter_Other", "Matter_TV"]
+    join_cols(to_handle, cols_to_merge)
+    return df(to_handle, columns=cols_to_include)
 
 
-# In[266]:
+def prepare_for_repare(source_df, cols_to_include):
+    to_handle = source_df.copy(deep=True)
+    to_handle = to_handle[to_handle["ActionType_Repare"].notnull()]
+    cols_to_merge = ["Matter_Tablet", "Matter_Phone"]
+    join_cols(to_handle, cols_to_merge)
+    return df(to_handle, columns=cols_to_include)
 
-# Выбираю тут колонки, которые 
+def prepare_for_pawn(source_df, cols_to_include):
+    to_handle = source_df.copy(deep=True)
+    to_handle = to_handle[to_handle["ActionType_Pawn"].notnull()]
+    cols_to_merge = ["Matter_Tablet", "Matter_Phone"]
+    join_cols(to_handle, cols_to_merge)
+    return df(to_handle, columns=cols_to_include)
 
-cols_for_ykt = [
-    # Колонки, полученные из названий фактов
-    [
-        "CallDate_Date",
-        "CustomerPhone_Phone",
-        "Matter_Notebook",
-        "Matter_Tablet",
-        "Matter_Phone",        
-        "Matter_TV",
-        "Matter_Other",
-        "conversation",
-        "Комплектация",
-        "Цена клиента",
-        "Наша цена",
-        "Утилизация",
-        "Решение клиента",
-    ],
-
-    # Колонки, в которые будут переименованы верхние, исходные колонки
-    [
-        "Дата",
-        "Номер телефона",
-        "Ноутбук/нетбук",
-        "Планшет",
-        "Телефон",        
-        "Телевизор",
-        "Другое",
-        "Разговор",
-        "Комплектация",
-        "Цена клиента",
-        "Наша цена",
-        "Утилизация",
-        "Решение клиента",
-    ]
-]
+def prepare_for_buryatia(source_df, cols_to_include):
+    to_handle = source_df.copy(deep=True)
+    cols_to_merge = ["Matter_Other", "Matter_TV"]
+    join_cols(to_handle, cols_to_merge)
+    return df(to_handle, columns=cols_to_include)
 
 
-# In[267]:
+def prepare_for_smswhatsapp(source_df, cols_to_include):
+    to_handle = source_df.copy(deep=True)
+    cols_to_merge = ["Matter_Other", "Matter_TV"]
+    join_cols(to_handle, cols_to_merge)
+    return df(to_handle, columns=cols_to_include)
 
-# Подготовка вывода для листа "Бурятия"
+def prepare_for_unsorted(source_df):
+    to_handle = source_df.copy(deep=True)
+    actions = [a for a in to_handle.columns if a.startswith("ActionType")]
+    not_existing_action = to_handle[actions[0]].isnull()
+    for a in actions[1:]:
+        not_existing_action &= to_handle[a].isnull();
+    return to_handle[not_existing_action]
 
-# todo действие по умолчанию - купить. Собрать такие графы, в которых нет действия, в таблицу "Купить" - клиент покупает у нас
-# todo ремонт только телефонов и ноутбуков - объединить всё, кроме телефонов и ноутбуков в графу "Другое"
 
-def join_other_matters(source_df, cols, new_name):
-    matter_other = df(index=source_df.index, columns=[new_name])
-
-    for matter in cols:
-        matter_other[new_name] = matter_other[new_name].dropna().append(source_df[matter].dropna())
-
-    source_df = pd.concat([source_df, matter_other], axis=1)
-    return source_df
-
-def extract_and_rename(source_df, cols):
-    extracted = df(source_df, columns=cols[0])
-    extracted.columns=cols[1]
-    return extracted
-
-def prepare_for_excel_ykt(source_df, col_name, output_cols):
-    yakutia = source_df[source_df.CustomerPlace_Buryatia.isnull()]
-    yakutia = yakutia[yakutia.Communication_SMS.isnull() & yakutia.Communication_WhatsApp.isnull()]
-    actions = yakutia[yakutia[col_name].notnull()]
-    return extract_and_rename(actions, output_cols)
-
-def prepare_for_buryatia(all_calls, cols):
-    # Звонки из Бурятии
-    calls_from_buryatia = all_calls[all_calls.CustomerPlace_Buryatia.notnull()]
-    
-    # Группирую все предметы кроме usial_matter в отдельный список для объединения в одной колонке
-    usial_matter = ["Matter_Notebook", "Matter_Phone", "Matter_Tablet"]
-    matter_except_usial = [col for col in calls_from_buryatia.columns if col.startswith("Matter") and col not in usial_matter]
-    
-    calls_buryatia_joined = join_other_matters(calls_from_buryatia, matter_except_usial, "Комплектующее")
-    if not calls_buryatia_joined.empty:
-        return extract_and_rename(calls_buryatia_joined, cols)
-    else:
-        return calls_from_buryatia
-
-def prepare_for_smswhatsapp(all_calls):
-    cols = ["Communication_WhatsApp", "Communication_SMS"]
-    all_calls["smswhatsapp"] = all_calls["Communication_WhatsApp"].append(all_calls["Communication_SMS"]).dropna()
-    smswhatsapp = all_calls[all_calls["smswhatsapp"].notnull()]
-    return extract_and_rename(smswhatsapp, cols_for_buryatia)
+# In[ ]:
 
 
 
-# In[268]:
 
-# cols = matter_except_usial
-# new_name = "Комплектующее"
-# source_df = calls_from_buryatia
+# In[7]:
 
-# matter_other = df(index=source_df.index, columns=[new_name])
-
-# matter_other[new_name] = matter_other[new_name].dropna().append(source_df["Matter_TV"].dropna())
-# matter_other[new_name] = matter_other[new_name].dropna().append(source_df["Matter_Other"].dropna())
-# matter_other
-
-# pd.concat([source_df, matter_other], axis=1)
-
-
-# In[269]:
-
-cols_for_buryatia = [
-    [
-        "CallDate_Date",
-        "CustomerPhone_Phone",
-        "Matter_Notebook",
-        "Matter_Tablet",
+colls_for_vikup_and_buryatia = [
+        "CallDate_Date", 
+        "CustomerPhone_Phone", 
+        "Matter_Notebook", 
+        "Matter_Tablet", 
         "Matter_Phone",
-        "Комплектующее",
-        "conversation",
-        "Комплектация",
-        "Цена клиента",
-        "Наша цена",
-        "Утилизация",
-        "Решение клиента",
-    ],
+        "Matter_Other", 
+        "conversation", 
+    ] + EMPTY_COLS
 
-    [
-        "Дата",
-        "Номер телефона",
-        "Ноутбук/нетбук",
-        "Планшет",
-        "Телефон",
-        "Другое",
-        "Разговор",
-        "Комплектация",
-        "Цена клиента",
-        "Наша цена",
-        "Утилизация",
-        "Решение клиента",
-    ]
+colls_for_prodazha = [
+    "CallDate_Date", 
+    "CustomerPhone_Phone", 
+    "Matter_Notebook", 
+    "Matter_Tablet", 
+    "Matter_Phone",
+    "Matter_TV",
+    "Matter_Other",
+    "conversation", 
+] + EMPTY_COLS
+
+colls_for_repare = [
+    "CallDate_Date", 
+    "CustomerPhone_Phone", 
+    "Matter_Notebook", 
+    "Matter_Tablet", 
+    "conversation",
+    "Разговор",
+    "Цена клиента",
+    "Наша цена",
+    "Решение клиента"
+]
+
+colls_for_pawn = [
+    "CallDate_Date", 
+    "CustomerPhone_Phone", 
+    "Matter_Notebook", 
+    "Matter_Tablet",
+    "Matter_Other",
+    "conversation",
+    "Комплектация",
+    "Цена клиента",
+    "Наша цена",
+    "Решение клиента"
 ]
 
 
-# In[270]:
+# In[ ]:
+
+
+
+
+# In[8]:
 
 def make_excel():
     calls = make_common_table()
     
+    
+    for_ykt = calls[calls["CustomerPlace_Buryatia"].isnull() &
+                      calls["Communication_SMS"].isnull() & 
+                      calls["Communication_WhatsApp"].isnull()
+                      ]
+
+    for_buryatia = calls[calls["CustomerPlace_Buryatia"].notnull() &
+                          calls["Communication_SMS"].isnull() & 
+                          calls["Communication_WhatsApp"].isnull()
+                          ]
+
+    for_whatsapp = calls[calls["Communication_SMS"].notnull() | 
+                          calls["Communication_WhatsApp"].notnull()
+                          ]
+
     writer = pd.ExcelWriter(OUTPUT_EXCEL)
 
-    vikup = prepare_for_excel_ykt(calls, "CustomerSells_Word", cols_for_ykt)
-    prodazha = prepare_for_excel_ykt(calls, "CustomerBuys_Word", cols_for_ykt)
-    remont = prepare_for_excel_ykt(calls, "Repare_Word", cols_for_ykt)
-    lombard = prepare_for_excel_ykt(calls, "Pawn_Word", cols_for_ykt)
-    buryatia = prepare_for_buryatia(calls, cols_for_buryatia)
-    smswhatsapp = prepare_for_smswhatsapp(calls)
-
+    vikup = prepare_for_vikup(for_ykt, colls_for_vikup_and_buryatia)
+    prodazha = prepare_for_prodazha(for_ykt, colls_for_prodazha)
+    remont = prepare_for_repare(for_ykt, colls_for_repare)
+    lombard = prepare_for_pawn(for_ykt, colls_for_pawn)
+    buryatia = prepare_for_buryatia(for_buryatia, colls_for_vikup_and_buryatia)
+    smswhatsapp = prepare_for_smswhatsapp(for_whatsapp, colls_for_vikup_and_buryatia)
+    without_action = prepare_for_unsorted(calls)
+    
     vikup.to_excel(writer, sheet_name = "Выкуп", index=False)
     prodazha.to_excel(writer, sheet_name = "Продажа", index=False)
     remont.to_excel(writer, sheet_name = "Ремонт", index=False)
     lombard.to_excel(writer, sheet_name = "Ломбард", index=False)
     buryatia.to_excel(writer, sheet_name = "Бурятия", index=False)
     smswhatsapp.to_excel(writer, sheet_name = "smswhatsapp", index=False)
+    without_action.to_excel(writer, sheet_name = "Действие не определено", index=False)
     writer.save()
 
 
-# In[271]:
+# In[9]:
 
 def report():
-    with open(PREPROCESSED_INPUT) as f:
-        source_file = f.read().splitlines()
-
-    percent_of_handled = len(calls) / len(source_file) * 100
+    num_lines = sum(1 for line in open(PREPROCESSED_INPUT))
+    percent_of_handled = len(calls) / num_lines * 100
     print("Процент успешно обработанных данных:", percent_of_handled)
     print("Строки с ошибками (необработано): ", строки_с_ошибками)
 
 
-# In[272]:
+# In[10]:
 
 def classify():
-    
     make_excel()
-    report()
+    #report()
 
 
-# In[273]:
+# In[1]:
 
 if __name__ == "__main__":
     classify()

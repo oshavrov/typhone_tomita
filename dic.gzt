@@ -4,13 +4,16 @@ import "articles_base.proto";  // Файлы base.proto и articles_base.proto �
 import "fact_types.proto";
 
 import "time/date.gzt";
+
 import "customer/place.gzt";
 import "customer/communications.gzt";
+
 import "matter/phone/phone.gzt";
 import "matter/notebook/notebook.gzt";
 import "matter/tablet/tablet.gzt";
 import "matter/tv/tv.gzt";
 import "matter/other/other.gzt";
+
 import "action/action.gzt";
 
 
