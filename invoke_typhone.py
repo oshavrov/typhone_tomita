@@ -15,6 +15,7 @@ def invoke():
     classifier.classify()
     end = time.time()
     print("Затраченное время:", end - start, "сек.")
-
+    input("Для выхода нажмите Enter")
+    
 if __name__ == "__main__":
     invoke()

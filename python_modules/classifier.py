@@ -32,16 +32,9 @@ EMPTY_COLS = ["Комплектация", "Цена клиента", "Наша �
 
 # In[3]:
 
-tree = ET.parse(INPUT_FILE)
-
-строки_с_ошибками = dict()
-
-root = tree.getroot()
-r = root.findall("Lead")
-
-def make_dict_of_leads(root=root):
+def make_dict_of_leads(xml_root):
     dict_of_leads = dict();
-    for lead in root.iter('Lead'):
+    for lead in xml_root.iter('Lead'):
         id = lead.attrib["id"]
 
         pulpy = ET.fromstring(lead.attrib["text"])
@@ -86,10 +79,10 @@ def remove_explicit_from_sentence(xml_sentence):
 
 # todo: помнить о тексте лида. Там выделены факты прямо в разметке - полезно при выводе информации в веб-интерфейсе
 
-def compare_facts_to_leads(root=root):
+def compare_facts_to_leads(xml_root):
     facts_grouped_by_lead = dict()
 
-    for i in root.find("document").find('facts'):
+    for i in xml_root.find("document").find('facts'):
         lead_id = i.attrib['LeadID']
         if facts_grouped_by_lead.get(lead_id):
             facts_grouped_by_lead[lead_id].append(i)
@@ -97,11 +90,11 @@ def compare_facts_to_leads(root=root):
             facts_grouped_by_lead[lead_id] = [i]
     return facts_grouped_by_lead
 
-def make_common_table():
+def make_common_table(xml_root):
     calls = df()
     
-    facts = compare_facts_to_leads()
-    leads = make_dict_of_leads()
+    facts = compare_facts_to_leads(xml_root)
+    leads = make_dict_of_leads(xml_root)
 
     for lead in facts:
         try:
@@ -150,8 +143,8 @@ if __name__ == "__main__":
 
 # In[9]:
 
-def make_excel():
-    calls = make_common_table()
+def make_excel(xml_root):
+    calls = make_common_table(xml_root)
     
     def prefill_null_colls(source_df, col_name):
         if col_name not in source_df.columns:
@@ -212,7 +205,13 @@ def report():
 # In[7]:
 
 def classify():
-    make_excel()
+    строки_с_ошибками = dict()
+    
+    tree = ET.parse(INPUT_FILE)
+    root = tree.getroot()
+    #r = root.findall("Lead")
+    
+    make_excel(root)
     #report()
     pass
 
