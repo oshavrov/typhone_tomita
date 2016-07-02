@@ -30,7 +30,7 @@ def threat_dates_in_input(input_filename=TEXT_INPUT, output_filename=TEXT_OUTPUT
         else:
             if re.match(r'.{3}', line):
                 prepared_string = date_string + " " + line
-                preprocessed_input.write(prepared_string + "\n")
+                print(prepared_string, file=preprocessed_input)
     f.close()
     preprocessed_input.close()
 
@@ -49,7 +49,7 @@ def replace_dots_in_line(input_filename=TEXT_OUTPUT):
             without_dots = re.sub(r'\.(.)', r' \1', without_dots)
             # make date with dots back
             without_dots = re.sub(r'(\d{2})/(\d{2})/(\d{4})', r'\1.\2.\3', without_dots)
-            preprocessed_input.write(without_dots + ".\n")
+            print(without_dots + '.', file=preprocessed_input)
     f.close()
     preprocessed_input.close()
     shutil.move(output_filename, input_filename);
