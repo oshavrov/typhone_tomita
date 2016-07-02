@@ -62,10 +62,7 @@ def prepare_for_vikup(source_df, cols_to_include):
 def prepare_for_prodazha(source_df, cols_to_include):
     to_handle = source_df.copy(deep=True)
     to_handle = to_handle[to_handle["ActionType_Buy"].notnull()]
-    cols_to_merge = ["Matter_Other", "Matter_TV"]
-    join_cols(to_handle, cols_to_merge)
     return df(to_handle, columns=cols_to_include)
-
 
 def prepare_for_repare(source_df, cols_to_include):
     to_handle = source_df.copy(deep=True)

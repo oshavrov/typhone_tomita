@@ -65,22 +65,21 @@ def remove_explicit_from_sentence(xml_sentence):
     date = DATE_TEMPLATE
     remove_target_node(xml_sentence, date)
     remove_target_node(xml_sentence, phoneno)
-
     
-"""
-   <b>
-      <s>
-         21.06.2016
-         <P n0="" lemma="89140580517">89140580517</P>
-         хочет
-         <W n1="" lemma="buy">купить</W>
-         <W n2="" lemma="ноутбук">ноутбук</W>
-         за 17000 руб ездить
-         <P n3="" lemma="Якутия">Якутия</P>
-         .
-      </s>
-   </b>
-"""
+    """
+       <b>
+          <s>
+             21.06.2016
+             <P n0="" lemma="89140580517">89140580517</P>
+             хочет
+             <W n1="" lemma="buy">купить</W>
+             <W n2="" lemma="ноутбук">ноутбук</W>
+             за 17000 руб ездить
+             <P n3="" lemma="Якутия">Якутия</P>
+             .
+          </s>
+       </b>
+    """
 
 
 # In[4]:
@@ -117,7 +116,7 @@ def make_common_table():
                     if fact_name not in cols:
                         fact_num = 0;
                     else:
-                        fact_name += SAME_CATEGORY_DELIMITER + str(fact_num )
+                        fact_name += SAME_CATEGORY_DELIMITER + str(fact_num)
                         fact_num += 1
                     cols.append(fact_name)
                     values.append(fact_field.attrib["val"])
@@ -144,14 +143,29 @@ def make_common_table():
     calls = calls.set_index("lead_id")
     return calls
 
+if __name__ == "__main__":
+    calls = make_common_table()
+    calls.to_excel(DEBUG_EXCEL)
 
-# In[5]:
+
+# In[9]:
 
 def make_excel():
     calls = make_common_table()
-    calls.to_excel(DEBUG_EXCEL)
     
+    def prefill_null_colls(source_df, col_name):
+        if col_name not in source_df.columns:
+            source_df[col_name] = np.nan
     
+    all_cols = ["ActionType_Sell", "ActionType_Repare", "ActionType_Pawn", 
+                "Communication_SMS", "Communication_WhatsApp",
+                "Matter_Notebook", "Matter_Phone", "Matter_Tablet", "Matter_TV", "Matter_Other", 
+                "CustomerPlace_Buryatia",
+               ]
+    
+    for col in all_cols:
+        prefill_null_colls(calls, col)
+        
     for_ykt = calls[calls["CustomerPlace_Buryatia"].isnull() &
                       calls["Communication_SMS"].isnull() & 
                       calls["Communication_WhatsApp"].isnull()
@@ -200,6 +214,7 @@ def report():
 def classify():
     make_excel()
     #report()
+    pass
 
 
 # In[8]:
