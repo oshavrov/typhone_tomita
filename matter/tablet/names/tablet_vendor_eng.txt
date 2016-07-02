@@ -1,0 +1,6 @@
+samsung
+apple
+lenovo
+htc
+sony
+meizu
