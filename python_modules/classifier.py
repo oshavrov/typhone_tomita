@@ -181,7 +181,8 @@ def make_excel(xml_root):
     lombard = prepare_for_pawn(for_ykt, colls_for_pawn)
     buryatia = prepare_for_buryatia(for_buryatia, colls_for_vikup_and_buryatia)
     smswhatsapp = prepare_for_smswhatsapp(for_whatsapp, colls_for_vikup_and_buryatia)
-    without_action = prepare_for_unsorted(calls)
+    without_action = prepare_for_unsorted(calls, "ActionType")
+    without_matter = prepare_for_unsorted(calls, "Matter")
     
     vikup.to_excel(writer, sheet_name = "Выкуп", index=False)
     prodazha.to_excel(writer, sheet_name = "Продажа", index=False)
@@ -190,6 +191,8 @@ def make_excel(xml_root):
     buryatia.to_excel(writer, sheet_name = "Бурятия", index=False)
     smswhatsapp.to_excel(writer, sheet_name = "smswhatsapp", index=False)
     without_action.to_excel(writer, sheet_name = "Действие не определено", index=False)
+    without_matter.to_excel(writer, sheet_name = "Предмет не определён", index=False)
+
     writer.save()
 
 

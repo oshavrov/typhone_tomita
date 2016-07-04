@@ -93,10 +93,11 @@ def prepare_for_smswhatsapp(source_df, cols_to_include):
     join_cols(to_handle, cols_to_merge)
     return df(to_handle, columns=cols_to_include)
 
-def prepare_for_unsorted(source_df):
+def prepare_for_unsorted(source_df, notExistionType):
     to_handle = source_df.copy(deep=True)
-    actions = [a for a in to_handle.columns if a.startswith("ActionType")]
+    actions = [a for a in to_handle.columns if a.startswith(notExistionType)]
     not_existing_action = to_handle[actions[0]].isnull()
     for a in actions[1:]:
         not_existing_action &= to_handle[a].isnull();
     return to_handle[not_existing_action].dropna(axis=1, how="all")
+
