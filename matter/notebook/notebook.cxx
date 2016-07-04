@@ -14,3 +14,4 @@ NotebookUserDefinedName -> AnyWord<kwtype="ноутбук_пользовател
 S -> NotebookWord (NotebookVendor+) (NotebookModel);
 S -> (NotebookWord) NotebookVendor (NotebookModel) (NotebookWord);
 S -> (NotebookWord) NotebookUserDefinedName (NotebookWord);
+S -> NotebookVendor NotebookWord;

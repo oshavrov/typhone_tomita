@@ -19,9 +19,8 @@ matter "телефон_пользовательское_название" {
 	key = { "matter/phone/names/phone_user_defined_name.txt" type=FILE}
 }
 
-
-/* Попробую пока чисто с грамматиками
-matter "телефон_модель" {
-	key = { "matter/phone/names/phone_model_eng.txt" type=FILE}
+TAuxDicArticle "самсунг_модели_из_файла"
+{
+	key = { "matter/phone/names/samsung_models_user-defined.txt" type=FILE}
 }
-*/
+

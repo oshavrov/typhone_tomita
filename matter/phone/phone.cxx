@@ -8,8 +8,21 @@ PhoneVendor -> PhoneVendorRus | PhoneVendorEng;
 
 PhoneModel -> UnknownPOS* AnyWord<wff=/(\d{1,5})|(\w\d{1,5})/>;
 
-Iphones -> AnyWord<wff=/(айфон|iphone)\s?\d\w{0,2}/>;
 PhoneUserDefinedName -> AnyWord<kwtype='**телефон_пользовательское_название**'> | Iphones;
+
+
+Iphones -> AnyWord<wff=/([Аа]йфон|[Ii]phone)\d?\w?/> (AnyWord<wff=/[4-6]\w?/>);
+
+SamsungGalaxyModels -> AnyWord<wff=/(сгс|sgs|cgc)\d?\w*/> (Word<wff=/[м]/>);
+SamsungASeriesModels -> AnyWord<wff=/[AaАа]\d/>;
+
+SamsungModels -> SamsungGalaxyModels;
+SamsungModels -> SamsungASeriesModels; 
+SamsungModels -> AnyWord<kwtype="самсунг_модели_из_файла">;
+
+
+S -> Iphones;
+S -> SamsungModels;
 
 S -> PhoneWord (PhoneVendor) (PhoneModel);
 S -> (PhoneVendor) (PhoneModel) PhoneWord;
