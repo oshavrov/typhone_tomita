@@ -1,20 +1,20 @@
 encoding "utf8";
 
 import "kwtypes.proto";
+import "matter/other/photocamera/photocamera.gzt";
 
 matter "другой_предмет_слово" {
-	key = { "matter/other/names/other_word.txt" type=FILE }
+	key = { "matter/other/names/other_word.txt", type=FILE }
 }
 
 matter "другой_предмет_производитель_рус" {
-	key = { "matter/other/names/other_vendor_rus.txt" type=FILE}
+	key = { "matter/other/names/other_vendor_rus.txt", type=FILE}
 }
 
 matter "другой_предмет_производитель_англ" {
-	key = { "matter/other/names/other_vendor_eng.txt" type=FILE}
+	key = { "matter/other/names/other_vendor_eng.txt", type=FILE}
 }
 
 matter "другой_предмет_пользовательское_название" {
-	key = { "matter/other/names/other_user_defined_name.txt" type=FILE}
+	key = { "matter/other/names/other_user_defined_name.txt", type=FILE}
 }
-

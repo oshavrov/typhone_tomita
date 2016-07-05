@@ -2,7 +2,7 @@ encoding "utf8";               // указываем кодировку, в ко
 import "base.proto";           // подключаем описания protobuf-типов (TAuxDicArticle и прочих)
 import "articles_base.proto";  // Файлы base.proto и articles_base.proto встроены в компилятор.
 import "fact_types.proto";
-
+import "kwtypes.proto";
 import "time/date.gzt";
 
 import "customer/place.gzt";
@@ -17,14 +17,13 @@ import "matter/other/other.gzt";
 import "action/action.gzt";
 
 
-
 // BEGIN КЛИЕНТ
 TAuxDicArticle "клиент_телефон" {
-    key = {"tomita:customer/phone.cxx" type = CUSTOM}
+    key = {"tomita:customer/phone.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "клиент_место" {
-    key = {"tomita:customer/place.cxx" type = CUSTOM}
+    key = {"tomita:customer/place.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "тип_коммуникации" {
@@ -39,19 +38,19 @@ TAuxDicArticle "дата" {
 
 // BEGIN ДЕЙСТВИЕ
 TAuxDicArticle "продажа" {
-    key = {"tomita:action/prodazha.cxx" type = CUSTOM}
+    key = {"tomita:action/prodazha.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "выкуп" {
-    key = {"tomita:action/vikup.cxx" type = CUSTOM}
+    key = {"tomita:action/vikup.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "ломбард" {
-    key = {"tomita:action/pawn.cxx" type = CUSTOM}
+    key = {"tomita:action/pawn.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "ремонт" {
-	key = {"tomita:action/repare.cxx" type = CUSTOM}
+	key = {"tomita:action/repare.cxx", type = CUSTOM}
 }
 // END ДЕЙСТВИЕ
 
@@ -62,24 +61,25 @@ TAuxDicArticle "предмет" {
 }
 
 TAuxDicArticle "телефон" {
-    key = { "tomita:matter/phone/phone.cxx" type = CUSTOM}
+    key = { "tomita:matter/phone/phone.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "ноутбук" {
-    key = {"tomita:matter/notebook/notebook.cxx" type = CUSTOM}
+    key = {"tomita:matter/notebook/notebook.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "планшет" {
-    key = {"tomita:matter/tablet/tablet.cxx" type = CUSTOM}
+    key = {"tomita:matter/tablet/tablet.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "телевизор" {
-    key = {"tomita:matter/tv/tv.cxx" type = CUSTOM}
+    key = {"tomita:matter/tv/tv.cxx", type = CUSTOM}
 }
 
 TAuxDicArticle "другой_предмет" {
-    key = {"tomita:matter/other/other.cxx" type = CUSTOM}
+    key = {"tomita:matter/other/other.cxx", type = CUSTOM}
 }
+
 // END ПРЕДМЕТ
 
 

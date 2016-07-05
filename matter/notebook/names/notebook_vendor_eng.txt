@@ -1,6 +1,7 @@
 lenovo
 asus
 acer
+lg
 hp
 dns
 sony vaio

@@ -30,6 +30,10 @@ message Matter : NFactType.TFact {
 	optional string Other = 5;
 }
 
+message Photocamera : NFactType.TFact {
+	required string Word = 1;  // слово "фотоаппарат"
+}
+
 message ActionType : NFactType.TFact {
 	optional string Sell = 1;  // выкуп
 	optional string Buy = 2;  // продажа
