@@ -15,3 +15,4 @@ S -> NotebookWord (NotebookVendor+) (NotebookModel);
 S -> (NotebookWord) NotebookVendor (NotebookModel) (NotebookWord);
 S -> (NotebookWord) NotebookUserDefinedName (NotebookWord);
 S -> NotebookVendor NotebookWord;
+S -> NotebookWord NotebookVendor;

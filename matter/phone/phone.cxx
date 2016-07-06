@@ -9,7 +9,7 @@ PhoneUserDefinedName -> AnyWord<kwtype='**телефон_пользовател�
 
 Iphones -> AnyWord<wff=/([Аа]йфон|[Ii]phone)\d?\w?/> (AnyWord<wff=/[4-6]\w?/>);
 
-SamsungGalaxyModels -> AnyWord<wff=/(сгс|sgs|cgc|([галeэ]{1,2}кси))\d?\w*/> (Word<wff=/[м]/>);
+SamsungGalaxyModels -> AnyWord<wff=/(сгс)|(sgs)|(cgc)|(г[аеэ]л[аeэ]кси)\d?\w?/> (AnyWord<wfl=/\w\d/>);
 SamsungASeriesModels -> AnyWord<wff=/[AaАа]\d/>;
 SamsungModels -> SamsungGalaxyModels;
 SamsungModels -> SamsungASeriesModels; 
