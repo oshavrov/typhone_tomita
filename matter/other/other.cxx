@@ -18,8 +18,9 @@ OtherUserDefinedName -> AnyWord<kwtype="другой_предмет_пользо
 
 //S -> SpecificMatter;
 S -> Photocamera;
-S -> OtherWord (OtherVendor) (OtherWord);
-S -> (OtherWord) OtherVendor (OtherWord);
+S -> OtherWord (OtherVendor);
+S -> OtherVendor (OtherWord);
 S -> OtherUserDefinedName (OtherVendor) (OtherWord);
 S -> (OtherVendor) OtherUserDefinedName;
 S -> OtherUserDefinedName;
+S -> OtherWord;
