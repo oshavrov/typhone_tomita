@@ -5,3 +5,6 @@ htc
 lg
 sony
 meizu
+zte
+explay
+fly

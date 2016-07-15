@@ -7,7 +7,7 @@ TabletVendorEng -> Word<kwtype="планшет_производитель_анг
 TabletVendor -> TabletVendorRus | TabletVendorEng;
 
 TabletModel -> UnknownPOS* AnyWord<wff=/(\d+)|(\w\d)|(\d\w)/>;
-
+SamsungTab -> AnyWord<wff=/(([Тт]аб)|([Tt]ab))\d?/> (AnyWord<wff=/\d\w?/>);
 TabletUserDefinedName -> AnyWord<kwtype='**планшет_пользовательское_название**'>;
 
 S -> TabletWord (TabletVendor) (TabletModel) (TabletWord);
@@ -16,3 +16,4 @@ S -> TabletVendor TabletWord; // асус планшет
 S -> TabletUserDefinedName (TabletVendor) (TabletWord);
 S -> TabletUserDefinedName;
 S -> (TabletWord) TabletUserDefinedName;
+S -> SamsungTab;

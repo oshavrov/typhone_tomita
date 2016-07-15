@@ -2,8 +2,8 @@
 
 //SpecificMatter -> Adj<gnc-agr[1]> Noun<gnc-agr[1]>;
 
-Playstation -> AnyWord<wff=/([Pp]s|[Пп]с)\d?/> (AnyWord<wff=/\d/>);
-Xbox -> AnyWord<wff=/([Xxbo]x)|([Хх]бо[хк]с?)((360)|(720))?/> (AnyWord<wff=/(360)|(720)/>);
+Playstation -> AnyWord<wff=/([Pp]s|[Пп]с)|([Pp]l)\d?/> (AnyWord<wff=/\d/>);
+Xbox -> AnyWord<wff=/(([Xx]box)|([Хх]бо(х|(кс))))((360)|(720))?/> (AnyWord<wff=/(360)|(720)/>);
 Console -> Playstation | Xbox;
 
 Photocamera -> Word<kwtype="фотоаппарат_слово">;

@@ -4,6 +4,7 @@ acer
 lg
 hp
 dns
+msi
 sony vaio
 toshiba
 dell

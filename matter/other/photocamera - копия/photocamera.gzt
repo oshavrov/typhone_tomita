@@ -1,8 +1,0 @@
-encoding "utf8";
-
-import "kwtypes.proto";
-
-matter "фотоаппарат_слово" {
-    key = {"tomita:matter/other/photocamera/photocamera.cxx", type = CUSTOM};
-    lemma = "фотоаппарат";
-}
