@@ -1,8 +1,3 @@
-
-# coding: utf-8
-
-# In[1]:
-
 import pandas as pd
 from pandas import DataFrame as df
 import xml.etree.ElementTree as ET
@@ -13,13 +8,6 @@ from python_modules.constants import *
 from python_modules.prepare_for_excel import *
 
 
-# In[ ]:
-
-
-
-
-# In[2]:
-
 DATE_TEMPLATE = re.compile(r'\d{2}.\d{2}.\d{4}')
 
 INPUT_FILE = os.path.normpath(r'IO\output.xml')
@@ -29,8 +17,8 @@ DEBUG_EXCEL = os.path.normpath(r'debug\common_table.xlsx')
 SAME_CATEGORY_DELIMITER = r'__'
 EMPTY_COLS = ["Комплектация", "Цена клиента", "Наша цена", "Утилизация", "Решение клиента"]
 
+строки_с_ошибками = dict()
 
-# In[3]:
 
 def make_dict_of_leads(xml_root):
     dict_of_leads = dict();
@@ -45,6 +33,7 @@ def make_dict_of_leads(xml_root):
         text = ''.join(source_sentence.itertext())
         dict_of_leads[id] = re.sub(r'\.+$', '', text.strip());
     return dict_of_leads
+
 
 def remove_explicit_from_sentence(xml_sentence):
     
@@ -74,9 +63,6 @@ def remove_explicit_from_sentence(xml_sentence):
        </b>
     """
 
-
-# In[4]:
-
 # todo: помнить о тексте лида. Там выделены факты прямо в разметке - полезно при выводе информации в веб-интерфейсе
 
 def compare_facts_to_leads(xml_root):
@@ -89,6 +75,7 @@ def compare_facts_to_leads(xml_root):
         else:
             facts_grouped_by_lead[lead_id] = [i]
     return facts_grouped_by_lead
+
 
 def make_common_table(xml_root):
     calls = df()
@@ -122,13 +109,12 @@ def make_common_table(xml_root):
             print("Value Error", e)
             print(e)
             lineno = str(int(lead) + 2)
-            строки_с_ошибками[int(lead) + 2] = leads[lead]
+            # строки_с_ошибками[int(lead) + 2] = leads[lead]
             print("Ошибка в строке " + lineno + " исходных данных.\n", leads[lead])
         except AssertionError as e:
-
             print("Assertion Error", e)
             lineno = str(int(lead) + 2)
-            строки_с_ошибками[int(lead) + 2] = leads[lead]
+            # строки_с_ошибками[int(lead) + 2] = leads[lead]
             print("Ошибка в строке " + lineno + " исходных данных.\n", leads[lead])
 
     calls["lead_id"] = calls["lead_id"].map(int)
@@ -140,8 +126,6 @@ if __name__ == "__main__":
     calls = make_common_table()
     calls.to_excel(DEBUG_EXCEL)
 
-
-# In[9]:
 
 def make_excel(xml_root):
     calls = make_common_table(xml_root)
@@ -196,8 +180,6 @@ def make_excel(xml_root):
     writer.save()
 
 
-# In[6]:
-
 def report():
     num_lines = sum(1 for line in open(PREPROCESSED_INPUT))
     percent_of_handled = len(calls) / num_lines * 100
@@ -205,10 +187,7 @@ def report():
     print("Строки с ошибками (необработано): ", строки_с_ошибками)
 
 
-# In[7]:
-
 def classify():
-    строки_с_ошибками = dict()
     
     tree = ET.parse(INPUT_FILE)
     root = tree.getroot()
@@ -219,13 +198,5 @@ def classify():
     pass
 
 
-# In[8]:
-
 if __name__ == "__main__":
     classify()
-
-
-# In[ ]:
-
-
-

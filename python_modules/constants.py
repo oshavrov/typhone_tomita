@@ -5,7 +5,7 @@ XML_CONFIG_NAME = os.path.normpath(r'config_xml.proto')
 TEXT_INPUT = os.path.normpath(r'IO/manual_input.txt')
 TEXT_OUTPUT = os.path.normpath(r'IO/preprocessed_input.txt')
 
-SOURCE_DATE_TEMPLATE = re.compile(r'(\d{2})(?:/|\.)(\d{2})(?:/|\.)(\d{4}).?')
+SOURCE_DATE_TEMPLATE = re.compile(r'(\d{2})(?:/|\.)(\d{2})(?:/|\.)((1[6-9])|(\d{4})).?')
 INSIDE_DATE_TEMPLATE = re.compile(r'\d{2}/\d{2}/\d{4}')
 
 DATE_TEMPLATE = re.compile(r'\d{2}.\d{2}.\d{4}')
